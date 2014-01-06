@@ -1,0 +1,33 @@
+# aliases
+
+# folders
+alias home="cd $HOME"
+alias work="cd $PROJECT_HOME"
+alias dr="cd $HOME/Dropbox"
+alias dl="cd $HOME/Downloads"
+
+# list
+alias la="ls -la"
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+# navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+
+# python
+alias ipy3="ipython3"
+alias ipy="ipython"
+alias pip3="pip-3.3"
+alias py3="python3"
+alias py="python"
+
+# git
+alias glp=git log --pretty=format:"%h; %an; %ci; %s"
+alias glpr=git log --reverse --pretty=format:"%h; %an; %ci; %s"
+
+# ohmyzsh
+alias ohmyzsh="subl ~/.oh-my-zsh"
+alias zshcfg="subl ~/.zshrc"

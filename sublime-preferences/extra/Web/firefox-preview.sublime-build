@@ -1,0 +1,4 @@
+{
+    "cmd": ["open","-a","Firefox","$file"],
+    "selector": "text.html"
+}

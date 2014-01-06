@@ -1,0 +1,36 @@
+# exports
+
+# general
+export EMAIL=afmalvim@gmail.com
+export EDITOR=subl
+export PROJECT_HOME=$HOME/work
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/usr/local/share/npm/bin
+
+# encoding
+export LANG="en_US"
+export LANG="en_US.UTF-8"
+
+# history
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+
+# brew
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+# pg
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+export DYLD_FALLBACK_LIBRARY_PATH="/Applications/Postgres.app/Contents/MacOS/lib/:$DYLD_LIBRARY_PATH"
+
+# node
+export NODE_PATH="/usr/local/lib/node_modules"
+
+# virtualenv wrapper
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--distribute"
+
+# pip
+export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+
+#heroku toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+

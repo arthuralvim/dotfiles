@@ -1,0 +1,6 @@
+*.pyc
+*.swo
+*.swp
+*.~
+.DS_Store
+vim/.vim/bundle

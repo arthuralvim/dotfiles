@@ -1,0 +1,65 @@
+{
+    "auto_complete": true,
+    "auto_complete_delay": 500,
+    "auto_match_enabled": true,
+    "bold_folder_labels": true,
+    "caret_style": "wide",
+    "color_scheme": "Packages/User/Monokai (SL).tmTheme",
+    "default_line_ending": "unix",
+    "detect_indentation": false,
+    "draw_white_space": "selection",
+    "ensure_newline_at_eof_on_save": true,
+    "flatland_square_tabs": true,
+    "folder_exclude_patterns":
+    [
+        ".bundle",
+        ".git",
+        ".hg",
+        ".ropeproject",
+        ".sass-cache",
+        ".settings",
+        ".svn",
+        ".vagrant",
+        "__pycache__",
+        "CVS"
+    ],
+    "font_options":
+    [
+        "subpixel_antialias"
+    ],
+    "font_size": 16.0,
+    "highlight_line": true,
+    "highlight_modified_tabs": true,
+    "ignored_packages":
+    [
+        "Vintage",
+        "Markdown",
+        "Python Flake8 Lint"
+    ],
+    "indent_guide_options":
+    [
+        "draw_active",
+        "draw_normal"
+    ],
+    "indent_to_bracket": true,
+    "open_files_in_new_window": false,
+    // Light theme : blue, darkblue - Dark Theme : red, green, blue, orange, yellow and pink
+    // "phoenix_color_*": true,
+    "phoenix_color_expanded_folder": true,
+    "phoenix_dirty_bottom_bar": true,
+    "phoenix_dirty_bottom_bar_red": true,
+    "phoenix_eighties": true,
+    "phoenix_highlight_current_tab": true,
+    "phoenix_solid_current_tab": true,
+    "rulers":
+    [
+        80
+    ],
+    "soda_folder_icons": true,
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "trim_automatic_white_space": true,
+    "trim_trailing_white_space_on_save": true,
+    "word_wrap": false,
+    "wrap_width": 120
+}
