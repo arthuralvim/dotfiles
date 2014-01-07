@@ -20,7 +20,6 @@ alias ~="cd ~" # `cd` is probably faster to type though
 # python
 alias ipy3="ipython3"
 alias ipy="ipython"
-alias pip3="pip-3.3"
 alias py3="python3"
 alias py="python"
 

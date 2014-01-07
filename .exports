@@ -3,8 +3,8 @@
 # general
 export EMAIL=afmalvim@gmail.com
 export EDITOR=subl
-export PROJECT_HOME=$HOME/work
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/usr/local/share/npm/bin
+export PROJECT_HOME=$HOME/Work
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/usr/local/share/npm/bin
 
 # encoding
 export LANG="en_US"
@@ -31,6 +31,8 @@ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--distribute"
 # pip
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
-#heroku toolbelt
+# heroku toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# rvm
+PATH=$PATH:$HOME/.rvm/bin

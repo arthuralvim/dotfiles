@@ -11,10 +11,6 @@ install icu4c
 # c
 install autoconf
 install automake
-install gdbm
-install gdk-pixbuf
-install gtk+
-install pango
 
 # version control
 install git
@@ -41,10 +37,8 @@ install nginx
 install uwsgi
 
 # python
-install py2cairo
+# install pygtk
 install pygobject
-install pygtk
-install readline
 install tesseract
 
 # queue
@@ -54,53 +48,17 @@ install rabbitmq
 install mongodb
 install mysql
 install redis
-install sqlite
-
-# ssl
-install openssl
 
 # image
-install cairo
-install freetype
 install graphicsmagick
-install jpeg
-install leptonica
-install libpng
-install libtiff
 
 # media
-install faac
 install ffmpeg
-install x264
+
 
 # other useful binaries
-install atk
-install cloog
-install cscope
-install fontconfig
-install gettext
-install glib
-install gmp
-install gnu-getopt
-install harfbuzz
-install intltool
-install isl
-install lame
-install libffi
-install libmpc
-install libtool
 install libxml2
-install libyaml
-install mpfr
-install pcre
-install pixman
-install pkg-config
-install rarian
 install swig
-install texi2html
-install xvid
-install xz
-install yasm
 
 # remove outdated versions from the cellar
 cleanup

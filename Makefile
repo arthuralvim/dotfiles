@@ -1,5 +1,5 @@
 
-setup.mac: osx git git.config python brew memcached rvm opencv symlinks
+setup.mac: git.config ohmyzsh symlinks heroku python opencv brew
 
 setup.ubuntu: apt git.ubuntu git.config python-ubuntu rvm nodejs symlinks
 
@@ -38,13 +38,9 @@ memcached:
 
 brew:
 	@echo ">>>>>>>>>>>>> BREW <<<<<<<<<<<<<<<"
-	@if [ ! -f /usr/local/brew ]; @ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
-	@if [ -f /usr/local/brew ]; then echo 'Homebrew already installed. Skipping...' ; fi
-	@brew update
-	@brew upgrade
-	@echo ">>>>>>>>> INSTALLING BREW FORMULAS  <<<<<<<<<<"
 	@brew bundle Brewfile
 	@brew linkapps
+	@rm -f ~/.zcompdump; compinit
 	@echo ">>>>>>>>> BREW FINISHED <<<<<<<<<<"
 	@echo
 
@@ -69,12 +65,11 @@ git.config:
 ohmyzsh:
 	@echo ">>>>>>>>>>>>> OH MY ZSH <<<<<<<<<<<<<<<"
 	@curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-	@chsh -s /bin/zsh
 	@echo ">>>>>>>>>>>>> OH MY ZSH FINISHED <<<<<<<<<<<<<<<"
 
 rvm:
 	@echo ">>>>>>>>>>>>> RVM <<<<<<<<<<<<<<<"
-	@if [ ! -f ~/.rvm/bin/rvm ]; then curl -L https://get.rvm.io | bash -s stable --ruby; fi
+	@if [ ! -f ~/.rvm/bin/rvm ]; then sudo curl -L https://get.rvm.io | bash -s stable --ruby; fi
 	@if [ -f ~/.rvm/bin/rvm ]; then echo 'RVM already installed. Skipping...' ; fi
 	@echo ">>>>>>>>> RVM FINISHED <<<<<<<<<<"
 	@echo
@@ -84,8 +79,8 @@ python:
 	@brew install python --framework --universal --with-brewed-openssl
 	@brew install python3 --framework --universal --with-brewed-openssl
 	@brew linkapps
-	@sudo pip install --upgrade pip
 	@sudo pip install -r python.packages
+	@sudo pip3 install -r python.packages
 	@echo ">>>>>>>>> PYTHON FINISHED <<<<<<<<<<"
 	@echo
 
@@ -106,7 +101,7 @@ nodejs:
 
 nodepm:
 	@echo ">>>>>>>>>>>>> NODE JS <<<<<<<<<<<<<<<"
-	@curl http://npmjs.org/install.sh | sh
+	@curl https://npmjs.org/install.sh | sh
 	@echo ">>>>>>>>> NODE JS FINISHED <<<<<<<<<<"
 	@echo
 
@@ -149,7 +144,6 @@ google.chrome.ubuntu:
 	@echo ">>>>>>>>>>>>> GOOGLE CHROME FINISHED <<<<<<<<<<<<<<<"
 	@echo
 
-
 heroku:
 	@echo ">>>>>>>>>>>>> HEROKU <<<<<<<<<<<<<<<"
 	@brew install heroku-toolbelt
@@ -183,7 +177,8 @@ java.ubuntu:
 
 opencv:
 	@echo ">>>>>>>>>>>>> OpenCV <<<<<<<<<<<<<<<"
-	@brew install opencv
+	@sudo pip install numpy
+	@brew install homebrew/science/opencv
 	@brew linkapps
 	@echo ">>>>>>>>> OpenCV FINISHED <<<<<<<<<<"
 	@echo
@@ -210,6 +205,10 @@ symlinks:
 	@mkdir -p ~/.virtualenvs
 	@rm -rf ~/.vim
 	@ln -sf `pwd`/.zshrc ~/.zshrc
+	@ln -sf `pwd`/.exports ~/.exports
+	@ln -sf `pwd`/.aliases ~/.aliases
+	@ln -sf `pwd`/.functions ~/.functions
+	@ln -sf `pwd`/.extra ~/.extra
 	@ln -sf `pwd`/vim/.vim ~/.vim
 	@ln -sf `pwd`/vim/.vimrc ~/.vimrc
 	@git submodule update --init
