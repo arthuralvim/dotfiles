@@ -4,24 +4,31 @@
     "auto_match_enabled": true,
     "bold_folder_labels": true,
     "caret_style": "wide",
-    "color_scheme": "Packages/User/Monokai (SL).tmTheme",
+    "close_windows_when_empty": true,
+    "color_scheme": "Packages/User/Monokai.tmTheme",
     "default_line_ending": "unix",
     "detect_indentation": false,
+    // "dictionary": "Packages/Language - English/en_US.dic",
+    // "dictionary": "Packages/User/Portuguese (Brazilian).dic",
     "draw_white_space": "selection",
     "ensure_newline_at_eof_on_save": true,
     "flatland_square_tabs": true,
     "folder_exclude_patterns":
     [
-        ".bundle",
         ".git",
-        ".hg",
-        ".ropeproject",
-        ".sass-cache",
-        ".settings",
-        ".svn",
-        ".vagrant",
         "__pycache__",
         "CVS"
+    ],
+    "file_exclude_patterns": [
+        "*.bundle",
+        "*.DS_Store",
+        "*.hg",
+        "*.ropeproject",
+        "*.sass-cache",
+        "*.settings",
+        "*.sublime-project",
+        "*.svn",
+        "*.vagrant"
     ],
     "font_options":
     [
@@ -33,8 +40,9 @@
     "ignored_packages":
     [
         "Vintage",
+        "Python Flake8 Lint",
         "Markdown",
-        "Python Flake8 Lint"
+        "SublimeLinter-pep257"
     ],
     "indent_guide_options":
     [
@@ -56,6 +64,7 @@
         80
     ],
     "soda_folder_icons": true,
+    "spell_check": false,
     "tab_size": 4,
     "translate_tabs_to_spaces": true,
     "trim_automatic_white_space": true,

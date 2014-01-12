@@ -1,7 +1,0 @@
-<snippet>
-    <content><![CDATA[
-console.log(${1:this});
-]]></content>
-    <tabTrigger>colog</tabTrigger>
-    <scope>source.javascript</scope>
-</snippet>

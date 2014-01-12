@@ -1,8 +1,0 @@
-// It's saved under path_to_Packages/User/
-
-{
-    "cmd": ["bibtex", "$file_base_name"],
-    "path": "$PATH:/usr/texbin:/usr/local/bin",
-    "file_regex": "^(...*?):([0-9]+): ([0-9]*)([^\\.]+)",
-    "selector": "text.tex.latex"
-}
