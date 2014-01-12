@@ -1,0 +1,7 @@
+<snippet>
+    <content><![CDATA[
+from django.utils.translation import ugettext as _
+]]></content>
+    <tabTrigger>ugettext</tabTrigger>
+    <scope>source.python</scope>
+</snippet>
