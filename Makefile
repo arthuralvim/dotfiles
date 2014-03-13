@@ -40,6 +40,7 @@ brew:
 	@echo ">>>>>>>>>>>>> BREW <<<<<<<<<<<<<<<"
 	@brew bundle Brewfile
 	@brew linkapps
+	@sudo chown -R $(whoami) /usr/local
 	@rm -f ~/.zcompdump; compinit
 	@echo ">>>>>>>>> BREW FINISHED <<<<<<<<<<"
 	@echo
@@ -80,7 +81,7 @@ python:
 	@brew install python3 --framework --universal --with-brewed-openssl
 	@brew linkapps
 	@sudo pip install -r python.packages
-	@sudo pip3 install -r python.packages
+	@sudo pip3 install -r python.base.packages
 	@echo ">>>>>>>>> PYTHON FINISHED <<<<<<<<<<"
 	@echo
 
@@ -107,9 +108,9 @@ nodepm:
 
 sublime.prefs:
 	@echo ">>>>>>>>>>>>> SUBLIME TEXT PREFERENCES <<<<<<<<<<<<<<<"
-	@ln -sf `pwd`/sublime-preferences/Default (OSX).sublime-keymap ~/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap
-	@ln -sf `pwd`/sublime-preferences/Preferences.sublime-settings ~/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings
-	@ln -sf `pwd`/sublime-preferences/Package Control.sublime-settings ~/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings
+	@ln -sf `pwd`/sublime-preferences/Default (OSX).sublime-keymap ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default (OSX).sublime-keymap
+	@ln -sf `pwd`/sublime-preferences/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
+	@ln -sf `pwd`/sublime-preferences/Package Control.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package Control.sublime-settings
 	@echo ">>>>>>>>>>>>> SUBLIME TEXT FINISHED <<<<<<<<<<<<<<<"
 
 sublime.prefs.ubuntu:
@@ -201,6 +202,21 @@ osx:
 	@echo ">>>>>>>>> OSX FINISHED <<<<<<<<<<"
 	@echo
 
+osx.remove.apps:
+	# removing apps I dont use.
+	@echo ">>>>>>>>>>>>> OSX REMOVE APPS <<<<<<<<<<<<<<<"
+	@sudo rm -Rf Chess.app
+	@sudo rm -Rf FaceTime.app
+	@sudo rm -Rf Game\ Center.app
+	@sudo rm -Rf Mail.app
+	@sudo rm -Rf Maps.app
+	@sudo rm -Rf Messages.app
+	@sudo rm -Rf Notes.app
+	@sudo rm -Rf Photo\ Booth.app
+	@sudo rm -Rf Reminders.app
+	@sudo rm -Rf Stickies.app
+	@echo ">>>>>>>>>>>>> OSX REMOVE APPS FINISHED <<<<<<<<<<<<<<<"
+
 symlinks:
 	@mkdir -p ~/.virtualenvs
 	@rm -rf ~/.vim
@@ -216,3 +232,43 @@ symlinks:
 	@ln -sf `pwd`/vim/.vim/thirdparty/vundle `pwd`/vim/.vim/bundle/vundle
 	@ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
 	@ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
+	sudo chown arthuralvim .pip
+	sudo ln -s /usr/local/Cellar/python/2.7.6/Frameworks/Python.framework/Versions/Current
+
+install.prefs:
+	@echo ">>>>>>>>>>>>> REMOVING LAST PREFERENCES <<<<<<<<<<<<<<<"
+	@echo ">>>>>>>>>>>>> SUBLIME TEXT SETTINGS <<<<<<<<<<<<<<<"
+	@cp `pwd`/sublime-preferences/Default\ \(OSX\).sublime-keymap ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap
+	@cp `pwd`/sublime-preferences/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
+	@cp `pwd`/sublime-preferences/Package\ Control.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
+	@cp `pwd`/sublime-preferences/sublime_jedi.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/sublime_jedi.sublime-settings
+	@cp `pwd`/sublime-preferences/SublimeLinter.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/SublimeLinter.sublime-settings
+	@cp `pwd`/sublime-preferences/PlainTasks.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/PlainTasks.sublime-settings
+	@echo ">>>>>>>>>>>>> SUBLIME TEXT SNIPPETS <<<<<<<<<<<<<<<"
+	@ln -sf `pwd`/sublime-preferences/codutf.sublime-snippet ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/codutf.sublime-snippet
+	@ln -sf `pwd`/sublime-preferences/console.sublime-snippet ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/console.sublime-snippet
+	@ln -sf `pwd`/sublime-preferences/debug.sublime-snippet ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/debug.sublime-snippet
+	@ln -sf `pwd`/sublime-preferences/debugjs.sublime-snippet ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/debugjs.sublime-snippet
+	@ln -sf `pwd`/sublime-preferences/debugpy.sublime-snippet ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/debugpy.sublime-snippet
+	@ln -sf `pwd`/sublime-preferences/include.sublime-snippet ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/include.sublime-snippet
+	@ln -sf `pwd`/sublime-preferences/route.sublime-snippet ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/route.sublime-snippet
+	@ln -sf `pwd`/sublime-preferences/ugettext.sublime-snippet ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/ugettext.sublime-snippet
+	@echo ">>>>>>>>>>>>> SUBLIME TEXT BUILD SYSTEMS <<<<<<<<<<<<<<<"
+	@ln -sf `pwd`/sublime-preferences/Bibtex.sublime-build ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Bibtex.sublime-build
+	@ln -sf `pwd`/sublime-preferences/chrome-preview.sublime-build ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/chrome-preview.sublime-build
+	@ln -sf `pwd`/sublime-preferences/CleanTexFiles.sublime-build ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/CleanTexFiles.sublime-build
+	@ln -sf `pwd`/sublime-preferences/firefox-preview.sublime-build ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/firefox-preview.sublime-build
+	@ln -sf `pwd`/sublime-preferences/PDFLatex.sublime-build ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/PDFLatex.sublime-build
+	@ln -sf `pwd`/sublime-preferences/RunBuild.py ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/RunBuild.py
+	@ln -sf `pwd`/sublime-preferences/RunBuildAll.py ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/RunBuildAll.py
+	@ln -sf `pwd`/sublime-preferences/safari-preview.sublime-build ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/safari-preview.sublime-build
+	@echo ">>>>>>>>>>>>> SUBLIME TEXT SPELL/DICTS <<<<<<<<<<<<<<<"
+	@ln -sf `pwd`/sublime-preferences/Portuguese\ \(Brazilian\).aff ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Portuguese\ \(Brazilian\).aff
+	@ln -sf `pwd`/sublime-preferences/Portuguese\ \(Brazilian\).dic ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Portuguese\ \(Brazilian\).dic
+	@ln -sf `pwd`/sublime-preferences/Portuguese\ \(Brazilian\).txt ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Portuguese\ \(Brazilian\).txt
+	# @echo ">>>>>>>>>>>>> ZSH <<<<<<<<<<<<<<<"
+	# @ln -sf `pwd`/.zshrc ~/.zshrc
+	# @ln -sf `pwd`/.exports ~/.exports
+	# @ln -sf `pwd`/.aliases ~/.aliases
+	# @ln -sf `pwd`/.functions ~/.functions
+	# @ln -sf `pwd`/.extra ~/.extra

@@ -5,6 +5,7 @@ alias home="cd $HOME"
 alias work="cd $PROJECT_HOME"
 alias dr="cd $HOME/Dropbox"
 alias dl="cd $HOME/Downloads"
+alias docs="cd $HOME/Documents"
 
 # list
 alias la="ls -la"

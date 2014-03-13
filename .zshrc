@@ -17,5 +17,6 @@ for file in ~/.{exports,functions,aliases,extra}; do
 done
 unset file
 
-# virtualenvwrapper
-source $(which virtualenvwrapper.sh)
+# key bindings
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
