@@ -1,0 +1,62 @@
+<snippet>
+    <content><![CDATA[
+from django.views.generic.edit import CreateView
+from django.shotcuts import get_object_or_404
+from ${2:app.models} import ${3:Model}
+from ${4:app.forms} import ${5:Form}
+
+
+class ${1:Name}View(CreateView):
+
+    context_object_name = None
+    fields = None
+    form_class = ${5:Form}
+    initial = {}
+    model = ${3:Model}
+    pk_url_kwarg = '${6:pk}'
+    queryset = None
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
+    success_url = None
+    template_name = '${7:template.html}'
+
+    def dispatch(self, *args, **kwargs):
+        return super(${1:Name}View, self).dispatch(*args, **kwargs)
+
+    def form_invalid(self, form):
+        return super(${1:Name}View, self).form_invalid(form)
+
+    def form_valid(self, form):
+        return super(${1:Name}View, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(${1:Name}View, self).get_context_data(**kwargs)
+        return context
+
+    def get_context_object_name(self, obj):
+        return super(${1:Name}View, self).get_context_object_name(obj)
+
+    def get_form(self, form_class):
+        return super(${1:Name}View, self).get_form(self, form_class)
+
+    def get_object(self):
+        return get_object_or_404(${3:Model}, pk=self.kwargs.get('${6:pk}'))
+
+    def get_queryset(self):
+        return super(${1:Name}View, self).get_queryset()
+
+    def get_success_url(self):
+        return super(${1:Name}View, self).get_success_url()
+
+    def get_slug_field(self):
+        return super(${1:Name}View, self).get_slug_field()
+
+    def get_template_name(self):
+        return super(${1:Name}View, self).get_template_name()
+
+
+${8:name}view = ${1:Name}View.as_view()
+]]></content>
+    <tabTrigger>cview</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

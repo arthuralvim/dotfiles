@@ -1,0 +1,22 @@
+<snippet>
+    <content><![CDATA[
+from django.views.generic.base import TemplateView
+
+
+class ${1:Name}View(TemplateView):
+
+    template_name = '${2:template.html}'
+
+    def dispatch(self, *args, **kwargs):
+        return super(${1:Name}View, self).dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(${1:Name}View, self).get_context_data(**kwargs)
+        return context
+
+
+${3:name}view = ${1:Name}View.as_view()
+]]></content>
+    <tabTrigger>tview</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

@@ -1,0 +1,26 @@
+<snippet>
+    <content><![CDATA[
+from django.views.generic.base import RedirectView
+from django.core.urlresolvers import reverse_lazy
+
+
+class ${1:Name}View(RedirectView):
+
+    permanent = False
+    query_string = True
+    pattern_name = '${2:url-name-to-redirect}'
+    url = reverse_lazy('${3:url-name-to-redirect}',)
+
+    def dispatch(self, *args, **kwargs):
+        return super(${1:Name}View, self).dispatch(*args, **kwargs)
+
+    def get_redirect_url(self, *args, **kwargs):
+        return super(${1:Name}View, self).get_redirect_url(*args, **kwargs)
+
+
+${4:name}view = ${1:Name}View.as_view()
+
+]]></content>
+    <tabTrigger>rview</tabTrigger>
+    <scope>source.python</scope>
+</snippet>
