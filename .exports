@@ -18,6 +18,9 @@ export HISTCONTROL=ignoredups
 # brew
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
+# docker
+export DOCKER_HOST=tcp://localhost:4243
+
 # pg
 export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 # export DYLD_FALLBACK_LIBRARY_PATH="/Applications/Postgres93.app/Contents/MacOS/lib/:$DYLD_LIBRARY_PATH"
