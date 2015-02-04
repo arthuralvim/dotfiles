@@ -1,0 +1,12 @@
+[user]
+    name = Arthur Alvim
+    email = afmalvim@gmail.com
+[core]
+    editor = subl -w
+    autocrlf = input
+[color]
+    ui = true
+[alias]
+    logo = log --oneline --decorate --all --graph
+    s = status -s
+    pushall = push --recurse-submodules=on-demand
