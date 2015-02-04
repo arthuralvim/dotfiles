@@ -8,5 +8,8 @@
     ui = true
 [alias]
     logo = log --oneline --decorate --all --graph
+    logor = log --reverse --oneline --decorate --all
     s = status -s
     pushall = push --recurse-submodules=on-demand
+[init]
+    templatedir = ~/.dotfiles/git/init_template
