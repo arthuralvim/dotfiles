@@ -11,5 +11,6 @@
     { "keys": ["ctrl+w"], "command": "run_build", "args":{"build_system":"Packages/User/chrome-preview.sublime-build"}},
     { "keys": ["ctrl+shift+b"], "command": "run_build", "args":{"build_system":"Packages/User/Bibtex.sublime-build"}},
     { "keys": ["ctrl+shift+l"], "command": "run_build", "args":{"build_system":"Packages/User/PDFLatex.sublime-build"}},
-    { "keys": ["ctrl+shift+h"], "command": "run_build", "args":{"build_system":"Packages/User/CleanTexFiles.sublime-build"}}
+    { "keys": ["ctrl+shift+h"], "command": "run_build", "args":{"build_system":"Packages/User/CleanTexFiles.sublime-build"}},
+    { "keys": ["f8"], "command": "permute_lines", "args": {"operation": "unique"} }
 ]
