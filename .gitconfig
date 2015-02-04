@@ -6,10 +6,20 @@
     autocrlf = input
 [color]
     ui = true
-[alias]
-    logo = log --oneline --decorate --all --graph
-    logor = log --reverse --oneline --decorate --all
-    s = status -s
-    pushall = push --recurse-submodules=on-demand
+[commit]
+    template = ~/.dotfiles/git/git-commit-template.txt
+[github]
+    user = arthuralvim
 [init]
     templatedir = ~/.dotfiles/git/init_template
+[alias]
+    blist = branch -l
+    ga = add -A :/
+    gb = branch
+    gc = commit
+    go = checkout
+    logo = log --oneline --decorate --all --graph
+    logof = log --oneline --name-only --decorate --all --graph
+    logor = log --reverse --oneline --decorate --all
+    pushall = push --recurse-submodules=on-demand
+    s = status -s
