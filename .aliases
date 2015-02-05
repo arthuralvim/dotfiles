@@ -27,3 +27,6 @@ alias py="python"
 # ohmyzsh
 alias ohmyzsh="subl ~/.oh-my-zsh"
 alias zshcfg="subl ~/.zshrc"
+
+# utils
+alias clipboard='pbcopy'

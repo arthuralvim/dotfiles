@@ -1,5 +1,26 @@
 #!/bin/bash
 
+# check if code is pep8 compliant
+
+if ! type "pep8" > /dev/null 2>&1;
+then
+    echo "please install pep8! -> pip install pep8"
+    exit 1
+fi
+
+pep8=`pep8 --filename="*.py" --ignore=W --exclude="manage.py,settings.py,migrations" --first --show-source --statistics .`
+
+if [ ${#pep8} -gt 0 ]
+then
+    echo "pep8 found errors!"
+    printf %s "$pep8"
+    exit 1
+else
+    echo "pep8 ok!"
+fi
+
+# check for debbuger entries
+
 pdb_check=$(git grep pdb -- '*.py')
 if [ ${#pdb_check} -gt 0 ]
 then
@@ -7,7 +28,7 @@ then
         echo $pdb_check
         exit 1
 else
-        echo "Code contains no break points"
+        echo "break points ok!"
 fi
 
 exit 0

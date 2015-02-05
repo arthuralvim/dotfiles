@@ -17,6 +17,7 @@
     ga = add -A :/
     gb = branch
     gc = commit
+    gcv = commit --no-verify
     go = checkout
     logo = log --oneline --decorate --all --graph
     logof = log --oneline --name-only --decorate --all --graph
