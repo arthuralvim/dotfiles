@@ -19,9 +19,11 @@
     gc = commit
     gcv = commit --no-verify
     go = checkout
+    logmr = log --oneline --decorate --all --graph HEAD..origin/master
     logo = log --oneline --decorate --all --graph
     logof = log --oneline --name-only --decorate --all --graph
     logor = log --reverse --oneline --decorate --all
     pushall = push --recurse-submodules=on-demand
-    rlc = reset --soft HEAD~1
+    undo_last_commit = reset --soft HEAD~1
+    master_like_remote = reset --hard origin/master
     s = status -s
