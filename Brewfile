@@ -1,4 +1,4 @@
-# Make sure we’re using the latest Homebrew
+# Make sure we're using the latest Homebrew
 update
 
 # Upgrade any already-installed formulae
@@ -8,26 +8,43 @@ upgrade
 install gfortran
 install icu4c
 
+# font
+install freetype
+install fontconfig
+
 # c
 install autoconf
 install automake
+install cmake
+install ctags
+
+# python
+install python --framework --universal --with-brewed-openssl
+install python3 --framework --universal --with-brewed-openssl
 
 # version control
 install git
 install git-extras
-install git-now
+install git-flow
 install mercurial
-install subversion
 
-# js
+# heroku
+install heroku-toolbelt
+
+# frontend
 install node
+install npm
+install phantomjs
+
+# r
+install r
+install r-gui
 
 # android
 install android-sdk
 
 # apps
 install htop-osx
-install macvim
 install tree
 install wget
 install zsh-completions
@@ -36,10 +53,28 @@ install zsh-completions
 install nginx
 install uwsgi
 
+# amazon
+install s3cmd
+
 # python
-# install pygtk
+install pygtk
 install pygobject
 install tesseract
+install readline
+
+# computer vision
+install opencv
+
+# cache
+install libmemcached
+install memcached
+install varnish3
+
+# search
+install elasticsearch
+
+# distributed systems
+install zeromq
 
 # queue
 install rabbitmq
@@ -48,58 +83,33 @@ install rabbitmq
 install mongodb
 install mysql
 install redis
+install postgresql93
 
 # image
+install imagemagick
 install graphicsmagick
 
 # media
 install ffmpeg
+install jpeg
+install openjpeg
+install libpng
+install libtiff
+install mplayer
+install lame
 
+#docs
+install ghostscript
+install gettext
+install pdf-tools
 
 # other useful binaries
 install libxml2
+install libyaml
 install swig
-
-# install casks
-tap phinze/cask
-install brew-cask
-
-# install apps
-cask install a-better-finder-rename
-cask install adobe-reader
-cask install alfred
-cask install caffeine
-cask install cyberduck
-cask install day-o
-cask install deeper
-cask install dropbox
-cask install firefox
-cask install gimp
-cask install gitx
-cask install google-chrome
-cask install inkscape
-cask install iterm2
-cask install jdownloader
-cask install keka
-cask install libreoffice
-cask install mactex
-cask install macvim
-cask install mongohub
-cask install postgres
-cask install rdio
-cask install skim
-cask install skype
-cask install spectacle
-cask install sqlite-database-browser
-cask install steam
-cask install sublime-text
-cask install teamviewer
-cask install totalfinder
-cask install utorrent
-cask install vagrant
-cask install virtualbox
-cask install vlc
-cask install xquartz
+install tree
+install wget
+install dash
 
 # docker.io apps
 install boot2docker

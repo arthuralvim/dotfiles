@@ -1,8 +1,0 @@
-Django==1.6.1
-flake8==2.1.0
-ipdb==0.7
-ipython==0.13.2
-pep257==0.2.4
-pep8==1.4.6
-pycrypto==2.6.1
-pyflakes==0.7.3

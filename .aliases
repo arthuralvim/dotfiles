@@ -10,6 +10,7 @@ alias docs="cd $HOME/Documents"
 # list
 alias la="ls -la"
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias gcl="git ls-files | xargs wc -l"
 
 # navigation
 alias ..="cd .."

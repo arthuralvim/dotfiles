@@ -1,7 +1,7 @@
 
-setup.mac: git.config ohmyzsh symlinks heroku python opencv brew
+setup.mac: symlinks ohmyzsh brew symlinks
 
-setup.ubuntu: apt git.ubuntu git.config python-ubuntu rvm nodejs symlinks
+setup.ubuntu: apt git.ubuntu symlinks
 
 apt:
 	@echo ">>>>>>>>>>>>> UBUNTU PACKAGES <<<<<<<<<<<<<<<"
@@ -21,24 +21,10 @@ apt.media:
 	@sudo apt-get install -y jdownloader
 	@echo ">>>>>>>>>>>>> UBUNTU MEDIA FINISHED <<<<<<<<<<<<<<<"
 
-memcached:
-	@echo ">>>>>>>>>>>>> MEMCACHED <<<<<<<<<<<<<<<"
-	@brew update
-	@-brew uninstall -y libev
-	@-brew install libevent
-	@brew link libevent
-	@-brew install memcached
-	@-brew install libmemcached
-	@-brew upgrade memcached
-	@-brew upgrade libmemcached
-	@brew unlink libevent
-	@brew linkapps
-	@echo ">>>>>>>>> MEMCACHED FINISHED <<<<<<<<<<"
-	@echo
-
 brew:
 	@echo ">>>>>>>>>>>>> BREW <<<<<<<<<<<<<<<"
 	@brew bundle Brewfile
+	@brew bundle Caskfile
 	@brew linkapps
 	@sudo chown -R $(whoami) /usr/local
 	@rm -f ~/.zcompdump; compinit
@@ -55,33 +41,14 @@ git.ubuntu:
 	@sudo aptitude install git -y
 	@echo ">>>>>>>>> GIT FINISHED <<<<<<<<<<":
 
-git.config:
-	@echo ">>>>>>>>>>>>> GIT CONFIG <<<<<<<<<<<<<<<"
-	@git config --global user.name "Arthur Alvim"
-	@git config --global user.email "afmalvim@gmail.com"
-	@git config --global core.editor "subl -w"
-	@git config --global color.ui true
-	@echo ">>>>>>>>> GIT CONFIG FINISHED <<<<<<<<<<":
-
 ohmyzsh:
 	@echo ">>>>>>>>>>>>> OH MY ZSH <<<<<<<<<<<<<<<"
 	@curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 	@echo ">>>>>>>>>>>>> OH MY ZSH FINISHED <<<<<<<<<<<<<<<"
 
-rvm:
-	@echo ">>>>>>>>>>>>> RVM <<<<<<<<<<<<<<<"
-	@if [ ! -f ~/.rvm/bin/rvm ]; then sudo curl -L https://get.rvm.io | bash -s stable --ruby; fi
-	@if [ -f ~/.rvm/bin/rvm ]; then echo 'RVM already installed. Skipping...' ; fi
-	@echo ">>>>>>>>> RVM FINISHED <<<<<<<<<<"
-	@echo
-
 python:
 	@echo ">>>>>>>>>>>>> PYTHON <<<<<<<<<<<<<<<"
-	@brew install python --framework --universal --with-brewed-openssl
-	@brew install python3 --framework --universal --with-brewed-openssl
-	@brew linkapps
 	@sudo pip install -r python.packages
-	@sudo pip3 install -r python.base.packages
 	@echo ">>>>>>>>> PYTHON FINISHED <<<<<<<<<<"
 	@echo
 
@@ -91,20 +58,6 @@ python.ubuntu:
 	@sudo pip install --upgrade pip
 	@sudo pip install -r python.packages
 	@echo ">>>>>>>>> PYTHON FINISHED <<<<<<<<<<"
-
-nodejs:
-	@echo ">>>>>>>>>>>>> NODE JS <<<<<<<<<<<<<<<"
-	@sudo apt-get install python-software-properties python g++ make -y
-	@sudo add-apt-repository ppa:chris-lea/node.js && sudo apt-get update
-	@sudo apt-get install nodejs -y
-	@echo ">>>>>>>>> NODE JS FINISHED <<<<<<<<<<"
-	@echo
-
-nodepm:
-	@echo ">>>>>>>>>>>>> NODE JS <<<<<<<<<<<<<<<"
-	@curl https://npmjs.org/install.sh | sh
-	@echo ">>>>>>>>> NODE JS FINISHED <<<<<<<<<<"
-	@echo
 
 sublime.prefs:
 	@echo ">>>>>>>>>>>>> SUBLIME TEXT PREFERENCES <<<<<<<<<<<<<<<"
@@ -126,62 +79,11 @@ sublime.ubuntu:
 	@echo ">>>>>>>>>>>>> SUBLIME TEXT FINISHED <<<<<<<<<<<<<<<"
 	@echo
 
-google.chrome:
-	@echo ">>>>>>>>>>>>> GOOGLE CHROME TEXT <<<<<<<<<<<<<<<"
-	@curl -O https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
-	@hdiutil attach googlechrome.dmg && cd /Volumes/Google\ Chrome && cp -R Google\ Chrome.app /Applications && hdiutil detach /Volumes/Google\ Chrome
-	@rm googlechrome.dmg
-	@echo ">>>>>>>>>>>>> GOOGLE CHROME FINISHED <<<<<<<<<<<<<<<"
-	@echo
-
 google.chrome.ubuntu:
 	@echo ">>>>>>>>>>>>> GOOGLE CHROME <<<<<<<<<<<<<<<"
-	# @wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-	# @sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && sudo apt-get update
-	# @sudo apt-get install google-chrome-stable
-	# or
 	@wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	@sudo dpkg -i google-chrome*.deb
 	@echo ">>>>>>>>>>>>> GOOGLE CHROME FINISHED <<<<<<<<<<<<<<<"
-	@echo
-
-heroku:
-	@echo ">>>>>>>>>>>>> HEROKU <<<<<<<<<<<<<<<"
-	@brew install heroku-toolbelt
-	@heroku plugins:install git://github.com/ddollar/heroku-config.git
-	@echo ">>>>>>>>>>>>> HEROKU FINISHED <<<<<<<<<<<<<<<"
-	@echo
-
-heroku.ubuntu:
-	@echo ">>>>>>>>>>>>> HEROKU <<<<<<<<<<<<<<<"
-	@wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-	@heroku plugins:install git://github.com/ddollar/heroku-config.git
-	@echo ">>>>>>>>>>>>> HEROKU FINISHED <<<<<<<<<<<<<<<"
-	@echo
-
-skype.ubuntu:
-	@echo ">>>>>>>>>>>>> SKYPE <<<<<<<<<<<<<<<"
-	@sudo sh -c "echo 'deb http://archive.canonical.com/ubuntu/ saucy partner' >> /etc/apt/sources.list.d/canonical_partner.list" && sudo apt-get update
-	@sudo apt-get install skype
-	@echo ">>>>>>>>>>>>> SKYPE FINISHED <<<<<<<<<<<<<<<"
-
-java.ppa.ubuntu:
-	@echo ">>>>>>>>>>>>> JAVA <<<<<<<<<<<<<<<"
-	@sudo add-apt-repository ppa:webupd8team/java && sudo apt-get update
-	@sudo apt-get install oracle-jdk7-installer
-	@echo ">>>>>>>>>>>>> JAVA FINISHED <<<<<<<<<<<<<<<"
-
-java.ubuntu:
-	@echo ">>>>>>>>>>>>> JAVA <<<<<<<<<<<<<<<"
-	@sudo apt-get install openjdk-7-jre icedtea-7-plugin
-	@echo ">>>>>>>>>>>>> JAVA FINISHED <<<<<<<<<<<<<<<"
-
-opencv:
-	@echo ">>>>>>>>>>>>> OpenCV <<<<<<<<<<<<<<<"
-	@sudo pip install numpy
-	@brew install homebrew/science/opencv
-	@brew linkapps
-	@echo ">>>>>>>>> OpenCV FINISHED <<<<<<<<<<"
 	@echo
 
 root.password:
@@ -201,21 +103,6 @@ osx:
 	@touch ~/.has_sourced_osx
 	@echo ">>>>>>>>> OSX FINISHED <<<<<<<<<<"
 	@echo
-
-osx.remove.apps:
-	# removing apps I dont use.
-	@echo ">>>>>>>>>>>>> OSX REMOVE APPS <<<<<<<<<<<<<<<"
-	@sudo rm -Rf Chess.app
-	@sudo rm -Rf FaceTime.app
-	@sudo rm -Rf Game\ Center.app
-	@sudo rm -Rf Mail.app
-	@sudo rm -Rf Maps.app
-	@sudo rm -Rf Messages.app
-	@sudo rm -Rf Notes.app
-	@sudo rm -Rf Photo\ Booth.app
-	@sudo rm -Rf Reminders.app
-	@sudo rm -Rf Stickies.app
-	@echo ">>>>>>>>>>>>> OSX REMOVE APPS FINISHED <<<<<<<<<<<<<<<"
 
 symlinks:
 	@mkdir -p ~/.virtualenvs
