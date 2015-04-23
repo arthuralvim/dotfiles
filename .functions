@@ -1,5 +1,11 @@
 # functions
 
+
+function datedir(){
+    echo `date '+%Y-%m-%d'`
+    mkdir `date '+%Y-%m-%d'`
+}
+
 # create a django project using my project template
 make_django_project(){
     django-admin.py startproject --template=https://github.com/arthuralvim/django-boot-template/archive/master.zip --extension=py,env,html,gitignore --name=Procfile,Makefile $1

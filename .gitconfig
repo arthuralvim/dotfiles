@@ -4,6 +4,7 @@
 [core]
     editor = subl -w
     autocrlf = input
+    excludesfile = ~/.global_ignore
 [color]
     ui = true
 [commit]

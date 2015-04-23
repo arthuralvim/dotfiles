@@ -8,8 +8,11 @@ alias dl="cd $HOME/Downloads"
 alias docs="cd $HOME/Documents"
 
 # list
+alias ls='ls -G'
 alias la="ls -la"
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+# git
 alias gcl="git ls-files | xargs wc -l"
 
 # navigation
@@ -25,9 +28,13 @@ alias ipy="ipython"
 alias py3="python3"
 alias py="python"
 
+
 # ohmyzsh
 alias ohmyzsh="subl ~/.oh-my-zsh"
 alias zshcfg="subl ~/.zshrc"
 
 # utils
 alias clipboard='pbcopy'
+alias top='htop'
+alias youtube='youtube-dl -t'
+alias ports='sudo lsof -i -P | grep -i "listen"'
