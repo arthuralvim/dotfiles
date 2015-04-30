@@ -13,6 +13,7 @@ alias mus="cd $HOME/Music"
 # list
 alias l="ls -a"
 alias ls='ls -G'
+alias lsh='ls -sh'
 alias la="ls -la"
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
@@ -50,3 +51,5 @@ alias clipboard='pbcopy'
 alias top='htop'
 alias youtube='youtube-dl -t'
 alias ports='sudo lsof -i -P | grep -i "listen"'
+alias ducks='du -cks * | sort -rn | head -n 10'
+alias duha='du -ha * | sort -rn | head -n 10'
