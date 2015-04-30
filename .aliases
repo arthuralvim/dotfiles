@@ -3,11 +3,15 @@
 # folders
 alias home="cd $HOME"
 alias work="cd $PROJECT_HOME"
-alias dr="cd $HOME/Dropbox"
-alias dl="cd $HOME/Downloads"
-alias docs="cd $HOME/Documents"
+alias drp="cd $HOME/Dropbox"
+alias dwl="cd $HOME/Downloads"
+alias doc="cd $HOME/Documents"
+alias pic="cd $HOME/Pictures"
+alias mov="cd $HOME/Movies"
+alias mus="cd $HOME/Music"
 
 # list
+alias l="ls -a"
 alias ls='ls -G'
 alias la="ls -la"
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
@@ -20,7 +24,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
 
 # python
 alias ipy3="ipython3"
@@ -28,12 +31,21 @@ alias ipy="ipython"
 alias py3="python3"
 alias py="python"
 
+# Python/Django
+alias pym="python manage.py"
+alias pymm="python manage.py migrate"
+alias pymr="python manage.py runserver"
+alias pyms="python manage.py shell"
+alias pymt="python manage.py test"
+alias pymapp="touch __init__.py admin.py models.py tests.py views.py urls.py"
+
 
 # ohmyzsh
 alias ohmyzsh="subl ~/.oh-my-zsh"
 alias zshcfg="subl ~/.zshrc"
 
 # utils
+alias c="clear"
 alias clipboard='pbcopy'
 alias top='htop'
 alias youtube='youtube-dl -t'

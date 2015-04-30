@@ -11,6 +11,7 @@ export LANG="en_US"
 export LANG="en_US.UTF-8"
 
 # history
+export FIGNORE=DS_Store
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
