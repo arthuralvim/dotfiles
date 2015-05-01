@@ -32,7 +32,7 @@ alias ipy="ipython"
 alias py3="python3"
 alias py="python"
 
-# Python/Django
+# python/django
 alias pym="python manage.py"
 alias pymm="python manage.py migrate"
 alias pymr="python manage.py runserver"
@@ -44,6 +44,11 @@ alias pymapp="touch __init__.py admin.py models.py tests.py views.py urls.py"
 # ohmyzsh
 alias ohmyzsh="subl ~/.oh-my-zsh"
 alias zshcfg="subl ~/.zshrc"
+
+# apps
+alias elastic="elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
+alias rabbit="rabbitmq-server"
+alias redis="redis-server /usr/local/etc/redis.conf"
 
 # utils
 alias c="clear"
