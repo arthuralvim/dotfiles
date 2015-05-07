@@ -39,7 +39,11 @@ alias pymr="python manage.py runserver"
 alias pyms="python manage.py shell"
 alias pymt="python manage.py test"
 alias pymapp="touch __init__.py admin.py models.py tests.py views.py urls.py"
+alias pipin='pip install'
 
+# git
+alias gpush='git push origin master'
+alias gpull='git pull --ff-only origin master'
 
 # ohmyzsh
 alias ohmyzsh="subl ~/.oh-my-zsh"
@@ -55,6 +59,7 @@ alias c="clear"
 alias clipboard='pbcopy'
 alias top='htop'
 alias youtube='youtube-dl -t'
+alias psg='ps aux | grep'
 alias ports='sudo lsof -i -P | grep -i "listen"'
 alias ducks='du -cks * | sort -rn | head -n 10'
 alias duha='du -ha * | sort -rn | head -n 10'
