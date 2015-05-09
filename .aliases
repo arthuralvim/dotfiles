@@ -40,6 +40,8 @@ alias pyms="python manage.py shell"
 alias pymt="python manage.py test"
 alias pymapp="touch __init__.py admin.py models.py tests.py views.py urls.py"
 alias pipin='pip install'
+alias pipf='pip freeze'
+alias asjson='python -m json.tool'
 
 # git
 alias gpush='git push origin master'
@@ -53,6 +55,9 @@ alias zshcfg="subl ~/.zshrc"
 alias elastic="elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
 alias rabbit="rabbitmq-server"
 alias redis="redis-server /usr/local/etc/redis.conf"
+alias va="vagrant"
+alias vash="vagrant ssh"
+alias vashc="vagrant ssh-config"
 
 # utils
 alias c="clear"
