@@ -9,6 +9,7 @@ alias doc="cd $HOME/Documents"
 alias pic="cd $HOME/Pictures"
 alias mov="cd $HOME/Movies"
 alias mus="cd $HOME/Music"
+alias ckc="cd $HOME/.cookiecutters"
 
 # list
 alias l="ls -a"
@@ -30,7 +31,7 @@ alias .....="cd ../../../.."
 alias ipy3="ipython3"
 alias ipy="ipython"
 alias py3="python3"
-alias py="python"
+alias pyt="python"
 
 # python/django
 alias pym="python manage.py"

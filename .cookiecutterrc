@@ -1,0 +1,14 @@
+default_context:
+    full_name: "Arthur Alvim"
+    email: "afmalvim@gmail.com"
+    github_username: "arthuralvim"
+cookiecutters_dir: "~/.cookiecutters/"
+abbreviations:
+    py: https://github.com/arthuralvim/python-project-template.git
+    dj: https://github.com/arthuralvim/django-project-template.git
+    fr: https://github.com/arthuralvim/frontend-project-template.git
+    sc: https://github.com/arthuralvim/scrapy-project-template.git
+    gh: https://github.com/{0}.git
+    bb: https://bitbucket.org/{0}
+    ga: https://github.com/arthuralvim/{0}.git
+    ba: https://bitbucket.org/arthuralvim/{0}

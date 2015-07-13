@@ -45,10 +45,11 @@
 	"flatland_square_tabs": true,
 	"folder_exclude_patterns":
 	[
-		".git",
-		".hg",
-		".svn",
 		"__pycache__",
+        ".git",
+        ".hg",
+        ".svn",
+        "build",
 		"cover",
 		"CVS"
 	],
