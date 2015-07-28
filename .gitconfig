@@ -13,6 +13,8 @@
     user = arthuralvim
 [init]
     templatedir = ~/.dotfiles/git/init_template
+[merge]
+	ff = only
 [alias]
     blist = branch -l
     ga = add -A :/
