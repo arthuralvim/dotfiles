@@ -3,7 +3,8 @@
 # general
 export EMAIL=afmalvim@gmail.com
 export EDITOR=subl
-export PROJECT_HOME=$HOME/Work
+export DROPBOX_HOME=$HOME/Dropbox
+export PROJECT_HOME=$DROPBOX_HOME/Work
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/usr/local/share/npm/bin
 
 # encoding
