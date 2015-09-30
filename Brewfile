@@ -1,187 +1,172 @@
-# Make sure we're using the latest Homebrew
-update
-
-# Upgrade any already-installed formulae
-upgrade
-
 # numeric
-install gfortran
-install icu4c
+brew 'gfortran'
+brew 'icu4c'
 
 # font
-install freetype
-install fontconfig
+brew 'freetype'
+brew 'fontconfig'
 
 # c
-install autoconf
-install automake
-install cmake
-install ctags
+brew 'autoconf'
+brew 'automake'
+brew 'cmake'
+brew 'ctags'
 
 # version control
-install git
-install git-extras
-install git-cal
-install git-flow
-install mercurial
+brew 'git-extras'
+brew 'git-cal'
+brew 'git-flow'
+brew 'mercurial'
 
 # network
-install aircrack-ng
-install arp-scan
-install b43-fwcutter
-install nmap
-install openvpn
-install reaver
-install subnetcalc
-install ettercap
+brew 'aircrack-ng'
+brew 'arp-scan'
+brew 'b43-fwcutter'
+brew 'nmap'
+brew 'openvpn'
+brew 'reaver'
+brew 'subnetcalc'
+brew 'ettercap'
 
 # log
-install logrotate
-install logstash
+brew 'logrotate'
+brew 'logstash'
 
 # monitoring
-install monit
-install nagios
-install zabbix
+brew 'monit'
+brew 'nagios'
+brew 'zabbix'
 
 # heroku
-install heroku-toolbelt
+brew 'heroku-toolbelt'
 
 # frontend
-install node
-install npm
+brew 'node'
+brew 'npm'
 
 # browser
-install chromedriver
-install phantomjs
+brew 'chromedriver'
+brew 'phantomjs'
 
 # r
-install r
-install r-gui
+brew 'r'
+brew 'r-gui'
 
 # android
-install android-sdk
+brew 'android-sdk'
 
 # utils
-install asciinema
-install autojump
-install cputhrottle
-install curl
-install editorconfig
-install fuzzy-find
-install htop-osx
-install mackup
-install md5deep
-install pstree
-install sassc
-install thefuck
-install tree
-install wget
-install zsh
-install zsh-completions
+brew 'asciinema'
+brew 'autojump'
+brew 'cputhrottle'
+brew 'curl'
+brew 'editorconfig'
+brew 'fuzzy-find'
+brew 'htop-osx'
+brew 'mackup'
+brew 'md5deep'
+brew 'pstree'
+brew 'sassc'
+brew 'thefuck'
+brew 'tree'
+brew 'wget'
+brew 'zsh'
+brew 'zsh-completions'
 
 # server
-install nginx
-install uwsgi
-install tomcat
-install haproxy
+brew 'nginx'
+brew 'uwsgi'
+brew 'tomcat'
+brew 'haproxy'
 
 # amazon
-install s3cmd
+brew 's3cmd'
 
 # python
-install python --framework --universal --with-brewed-openssl
-install python3 --framework --universal --with-brewed-openssl
-install brew-pip
-install pypy
-install pypy3
-install pyqt
-install pyqt5
-install pygtk
-install pygobject
-install tesseract
-install readline
-
-# ruby
-install brew-gem
+brew 'python'
+brew 'python3'
+brew 'pypy'
+brew 'pypy3'
+brew 'pyqt'
+brew 'pyqt5'
+brew 'pygtk'
+brew 'pygobject'
+brew 'tesseract'
+brew 'readline'
 
 # computer vision
-install opencv
+brew 'opencv'
 
 # cache
-install libmemcached
-install memcached
-install memcache-top
-install varnish3
+brew 'libmemcached'
+brew 'memcached'
+brew 'memcache-top'
+brew 'varnish3'
 
 # search
-install elasticsearch
+brew 'elasticsearch'
 
 # distributed systems
-install zeromq
+brew 'zeromq'
 
 # languages
-lua
-go
-scala
-erlang
-elixir
+brew 'lua'
+brew 'go'
+brew 'scala'
+brew 'erlang'
+brew 'elixir'
 
 # elixir
-elixir-build
-exenv
+brew 'elixir-build'
+brew 'exenv'
 
 # queue
-install rabbitmq
+brew 'rabbitmq'
 
 # database
-install mongodb
-install mysql
-install redis
-install cassandra
-install couchdb
-install hadoop
-install mariadb
-install riak
+brew 'mongodb'
+brew 'mysql'
+brew 'redis'
+brew 'cassandra'
+brew 'couchdb'
+brew 'hadoop'
+brew 'mariadb'
+brew 'riak'
+
+# bi
+brew 'kettle'
 
 # postgres
-install pg_top
-install pgbadger
-install pgbouncer
-install pgcli
-install pgformatter
-install postgis
-install postgresql93
+brew 'pg_top'
+brew 'pgbadger'
+brew 'pgbouncer'
+brew 'pgcli'
+brew 'pgformatter'
+brew 'postgis'
+brew 'postgresql93'
 
 # image
-install imagemagick
-install graphicsmagick
+brew 'imagemagick'
+brew 'graphicsmagick'
 
 # media
-install faac
-install ffmpeg
-install flac
-install jpeg
-install lame
-install libpng
-install libtiff
-install mplayer
-install openjpeg
+brew 'faac'
+brew 'ffmpeg'
+brew 'flac'
+brew 'jpeg'
+brew 'lame'
+brew 'libpng'
+brew 'libtiff'
+brew 'mplayer'
+brew 'openjpeg'
 
 # docs
-install ghostscript
-install gettext
-install rubber
-install pdf-tools
+brew 'ghostscript'
+brew 'gettext'
+brew 'rubber'
+brew 'pdf-tools'
 
 # other useful binaries
-install libxml2
-install libyaml
-install swig
-
-# docker.io apps
-install boot2docker
-install docker
-
-# remove outdated versions from the cellar
-cleanup
+brew 'libxml2'
+brew 'libyaml'
+brew 'swig'
