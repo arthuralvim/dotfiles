@@ -1,5 +1,8 @@
+tap 'caskroom/cask'
+tap 'homebrew/science'
+
 # numeric
-brew 'gfortran'
+brew 'gcc'
 brew 'icu4c'
 
 # font
@@ -12,18 +15,21 @@ brew 'automake'
 brew 'cmake'
 brew 'ctags'
 
+# java
+cask 'java'
+
 # version control
 brew 'git-extras'
 brew 'git-cal'
 brew 'git-flow'
 brew 'mercurial'
+brew 'meld'
 
 # network
 brew 'aircrack-ng'
 brew 'arp-scan'
 brew 'b43-fwcutter'
 brew 'nmap'
-brew 'openvpn'
 brew 'reaver'
 brew 'subnetcalc'
 brew 'ettercap'
@@ -49,8 +55,8 @@ brew 'chromedriver'
 brew 'phantomjs'
 
 # r
+cask 'xquartz'
 brew 'r'
-brew 'r-gui'
 
 # android
 brew 'android-sdk'
@@ -130,20 +136,18 @@ brew 'redis'
 brew 'cassandra'
 brew 'couchdb'
 brew 'hadoop'
-brew 'mariadb'
 brew 'riak'
 
 # bi
 brew 'kettle'
 
 # postgres
-brew 'pg_top'
 brew 'pgbadger'
 brew 'pgbouncer'
 brew 'pgcli'
 brew 'pgformatter'
 brew 'postgis'
-brew 'postgresql93'
+brew 'postgresql'
 
 # image
 brew 'imagemagick'
