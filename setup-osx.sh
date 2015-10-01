@@ -28,5 +28,5 @@ cd $DOTFILES_DIR
 # install brew packages
 
 brew tap homebrew/bundle
-brew bundle Brewfile
-brew bundle Caskfile
+brew bundle install --file=Brewfile
+brew bundle install --file=Caskfile
