@@ -1,5 +1,6 @@
 tap 'caskroom/cask'
 tap 'homebrew/science'
+tap 'homebrew/x11'
 
 # numeric
 brew 'gcc'
@@ -9,14 +10,15 @@ brew 'icu4c'
 brew 'freetype'
 brew 'fontconfig'
 
+# java
+cask 'java'
+
 # c
 brew 'autoconf'
 brew 'automake'
 brew 'cmake'
 brew 'ctags'
 
-# java
-cask 'java'
 
 # version control
 brew 'git-extras'
@@ -107,7 +109,7 @@ brew 'opencv'
 brew 'libmemcached'
 brew 'memcached'
 brew 'memcache-top'
-brew 'varnish3'
+brew 'varnish'
 
 # search
 brew 'elasticsearch'
