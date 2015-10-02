@@ -1,9 +1,10 @@
 {
+    "bootstrapped": true,
     "in_process_packages":
     [
     ],
-	"installed_packages":
-	[
+    "installed_packages":
+    [
         "AdvancedNewFile",
         "AngularJS",
         "AngularJS Snippets",
@@ -28,18 +29,21 @@
         "GitStatus",
         "Grunt",
         "Handlebars",
+        "Highlighter",
+        "HTML Mustache",
         "Inc-Dec-Value",
         "Jedi - Python autocompletion",
         "LaTeXTools",
         "LESS",
         "Markdown Preview",
+        "Package Control",
         "PlainTasks",
         "Pretty JSON",
         "Pretty YAML",
         "Ruby on Rails snippets",
         "RubyTest",
-        "SASS Snippets",
         "Sass",
+        "SASS Snippets",
         "SideBarEnhancements",
         "Status Bar Time",
         "SublimeGit",
@@ -49,14 +53,18 @@
         "SublimeLinter-pep8",
         "SublimeLinter-ruby",
         "SublimeREPL",
+        "Tag",
         "Text Pastry",
         "Theme - Farzher",
         "Theme - Flatland",
         "Theme - Phoenix",
         "Theme - Soda",
+        "Theme - Spacegray",
         "Themr",
         "Tomorrow Color Schemes",
         "Unicode Character Highlighter",
-        "WordCount"
-	]
+        "WordCount",
+        "YAML Nav"
+    ]
 }
+ 
