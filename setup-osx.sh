@@ -1,56 +1,49 @@
 # dotfiles setup-osx
 
-# check if brew is installed
-
 which -s brew
 if [[ $? != 0 ]] ; then
     echo "please install Homebrew"
     echo "https://github.com/mxcl/homebrew/wiki/installation"
 else
-    brew update
+    echo "brew installed!"
 fi
 
-# check if git is installed
+which -s git
+if [[ $? != 0 ]] ; then
+    echo "installing git"
+    brew install git
+else
+    echo "git installed!"
+fi
 
-which -s git || brew install git
+cd $HOME
 
-HOME_DIR="~"
-cd HOME_DIR
-
-DOTFILES_DIR="$HOME_DIR/dotfiles"
+DOTFILES_DIR="$HOME/.dotfiles"
 
 if [ ! -d "$DOTFILES_DIR" ]; then
-    git clone git@github.com:arthuralvim/dotfiles.git $DOTFILES_DIR
+    echo "downloading dotfiles"
+    git clone https://github.com/arthuralvim/dotfiles.git $DOTFILES_DIR
+else
+    echo "dotfiles installed!"
 fi
 
 cd $DOTFILES_DIR
 
-for file in $DOTFILES_DIR/.{aliases, bash_profile, bashrc, cookiecutterrc, exports, extra, functions, gitconfig, gitignore, global_gitignore, vimrc, zshrc}
+for file in {aliases,bash_profile,bashrc,cookiecutterrc,exports,extra,functions,gitconfig,gitignore,global_gitignore,vimrc,zshrc};
 do
-    echo "pwd/.$file"
-    # ln -sf "pwd/.$file" "$HOME_DIR/.$file"
+	if [ -L $HOME/.$file ]; then
+		echo "updating $HOME/.$file"
+		rm $HOME/.$file
+    	ln -s $DOTFILES_DIR/.$file $HOME/.$file
+	else
+		echo "sending $HOME/.$file"
+    	ln -s $DOTFILES_DIR/$file $HOME/.$file
+    fi
 done
+unset file
 
-# zsh and ohmyzsh
-
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-chsh -s /bin/zsh
-
-sudo chown $USER .pip
-
-# install brew packages
-
+brew update
 brew tap homebrew/bundle
+
 brew bundle install --file=Brewfile
 brew bundle install --file=Caskfile
-
-# install vim settings
-
-cd $HOME_DIR
-vim +NeoBundleInstall +qall
-
-# install sublime settings
-
-rsync -vazh --partial $DOTFILES_DIR/sublime-preferences/ ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
-
-

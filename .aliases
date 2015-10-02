@@ -60,10 +60,6 @@ alias va="vagrant"
 alias vash="vagrant ssh"
 alias vashc="vagrant ssh-config"
 
-# db
-alias pgl="pgcli $(DATABASE_URL)"
-alias pgw="pgweb --url $(DATABASE_URL) --listen=1770"
-
 # utils
 alias c="clear"
 alias clipboard='pbcopy'
