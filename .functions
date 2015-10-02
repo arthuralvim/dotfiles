@@ -22,6 +22,10 @@ function mkd() {
     mkdir -p "$@" && cd "$@"
 }
 
+function gerar_chave_ssh() {
+    ssh-keygen -t rsa -b 4096 -C "afmalvim@gmail.com"
+}
+
 function install_oh_my_zsh() {
 
     # check if oh_my_zsh is installed
