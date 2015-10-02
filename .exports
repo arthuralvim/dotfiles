@@ -31,7 +31,7 @@ export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 # virtualenvwrapper
-if [ -f $(which virtualenvwrapper.sh) ]; then
+if [ -f "$(which virtualenvwrapper.sh)" ]; then
     export VENVWRAP=$(which virtualenvwrapper.sh)
 fi
 
@@ -41,7 +41,7 @@ else
   export EDITOR='subl'
 fi
 
-if [ ! -z $VENVWRAP ]; then
+if [ ! -x $VENVWRAP ]; then
     # virtualenvwrapper
     # make sure env directory exists; else create it
     [ -d $HOME/.virtualenvs ] || mkdir -p $HOME/.virtualenvs

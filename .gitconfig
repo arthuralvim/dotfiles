@@ -27,7 +27,4 @@
     logof = log --oneline --name-only --decorate --all --graph
     logor = log --reverse --oneline --decorate --all
     pushall = push --recurse-submodules=on-demand
-    undo_last_commit = reset --soft HEAD~1
-    master_like_remote = reset --hard origin/master
-    count_lines = ls-files | xargs wc -l
     s = status -s
