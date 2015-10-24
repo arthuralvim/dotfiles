@@ -43,6 +43,7 @@ alias pymapp="touch __init__.py admin.py models.py tests.py views.py urls.py"
 alias pipin='pip install'
 alias pipf='pip freeze'
 alias asjson='python -m json.tool'
+alias pyserver='python -m SimpleHTTPServer'
 
 # git
 alias gpush='git push origin master'
@@ -59,6 +60,43 @@ alias redis="redis-server /usr/local/etc/redis.conf"
 alias va="vagrant"
 alias vash="vagrant ssh"
 alias vashc="vagrant ssh-config"
+
+# npm
+alias nt='npm test'
+alias np='npm publish'
+alias nrb='npm run build'
+alias nrc='npm run cover'
+alias nrr='npm run report'
+alias ni='npm install'
+alias nis='npm install --save'
+alias nisd='npm install --save-dev'
+alias nig='npm install -g'
+alias nd='node-debug'
+alias nm='nodemon'
+alias ndm='node-debug node_modules/.bin/_mocha'
+alias nu='npm update'
+alias nug='npm update -g'
+alias ns='npm start'
+
+# bower
+alias bi='bower install'
+alias bu='bower update'
+alias bug='bower install -g'
+alias bis='bower install --save'
+alias bisd='bower install --save-dev'
+alias bp='bower register'
+
+# grunt
+alias gr='grunt'
+alias grb='grunt build'
+alias grbs='grunt build:stage'
+alias grbp='grunt build:production'
+alias grds='grunt deploy:stage'
+alias grdp='grunt deploy:production'
+
+# gulp
+alias gub='gulp build'
+alias gur='gulp release'
 
 # utils
 alias c="clear"
