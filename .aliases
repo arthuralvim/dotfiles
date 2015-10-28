@@ -99,6 +99,7 @@ alias gub='gulp build'
 alias gur='gulp release'
 
 # utils
+alias usuarios="cut -d: -f1 /etc/passwd"
 alias c="clear"
 alias clipboard='pbcopy'
 alias top='htop'
