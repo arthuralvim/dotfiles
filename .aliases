@@ -98,6 +98,9 @@ alias grdp='grunt deploy:production'
 alias gub='gulp build'
 alias gur='gulp release'
 
+# jekyll
+alias jky='jekyll serve -w'
+
 # utils
 alias usuarios="cut -d: -f1 /etc/passwd"
 alias c="clear"
