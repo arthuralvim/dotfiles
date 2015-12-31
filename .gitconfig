@@ -9,6 +9,8 @@
     ui = true
 [commit]
     template = ~/.dotfiles/git/git-commit-template.txt
+[web]
+  browser = google-chrome
 [github]
     user = arthuralvim
 [init]
@@ -16,15 +18,19 @@
 [merge]
 	ff = only
 [alias]
-    blist = branch -l
-    ga = add -A :/
-    gb = branch
-    gc = commit
-    gcv = commit --no-verify
-    go = checkout
+    c = commit
+    call = commit -A :/
+    ca = commit --amend
+    cm = commit -m
+    cam = commit --amend -m
+    cnv = commit --no-verify
+    d = diff
+    dc = diff --cached
+    brl = branch -l
     logmr = log --oneline --decorate --all --graph HEAD..origin/master
     logo = log --oneline --decorate --all --graph
     logof = log --oneline --name-only --decorate --all --graph
     logor = log --reverse --oneline --decorate --all
+    tree = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit
     pushall = push --recurse-submodules=on-demand
     s = status -s
