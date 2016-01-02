@@ -18,9 +18,6 @@ alias lsh='ls -sh'
 alias la="ls -la"
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
-# git
-alias gcl="git ls-files | xargs wc -l"
-
 # navigation
 alias ..="cd .."
 alias ...="cd ../.."
@@ -44,10 +41,43 @@ alias pipin='pip install'
 alias pipf='pip freeze'
 alias asjson='python -m json.tool'
 alias pyserver='python -m SimpleHTTPServer'
+alias -s py=subl
+
+# ansible
+
+alias ag="ansible-galaxy"
+
+function play {
+    local check_extra_vars="$(pwd)/extra-vars.yml"
+    if [ -f $check_extra_vars ]; then
+        ansible-playbook "$@" --extra-vars "@extra-vars.yml"
+    else
+        ansible-playbook "$@"
+    fi
+}
+
+function play-ping {
+    ansible "$@" -m ping
+}
+
+function play-setup {
+    ansible "$@" -m setup
+}
+
+# Vagrant
+alias vaup="vagrant up"
+alias vaha="vagrant halt"
+alias vapro="vagrant provision"
+alias vade="vagrant destroy"
+alias vast="vagrant status"
+alias vash="vagrant ssh"
+alias vashc="vagrant ssh-config"
+alias valist="vagrant box list"
 
 # git
 alias gpush='git push origin master'
 alias gpull='git pull --ff-only origin master'
+alias gcl="git ls-files | xargs wc -l"
 
 # ohmyzsh
 alias ohmyzsh="subl ~/.oh-my-zsh"
@@ -57,9 +87,6 @@ alias zshcfg="subl ~/.zshrc"
 alias elastic="elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
 alias rabbit="rabbitmq-server"
 alias redis="redis-server /usr/local/etc/redis.conf"
-alias va="vagrant"
-alias vash="vagrant ssh"
-alias vashc="vagrant ssh-config"
 
 # npm
 alias nt='npm test'
@@ -101,7 +128,12 @@ alias gur='gulp release'
 # jekyll
 alias jky='jekyll serve -w'
 
+# networking
+alias ipext='dig +short myip.opendns.com @resolver1.opendns.com'
+
 # utils
+alias -g gp='| grep -i'
+alias rm = 'rm -i'
 alias usuarios="cut -d: -f1 /etc/passwd"
 alias c="clear"
 alias clipboard='pbcopy'
@@ -112,4 +144,4 @@ alias ports='sudo lsof -i -P | grep -i "listen"'
 alias disk_usage='df -h'
 alias ducks='du -cks * | sort -rn | head -n 10'
 alias duha='du -ha * | sort -rn | head -n 10'
-alias ipext='dig +short myip.opendns.com @resolver1.opendns.com'
+

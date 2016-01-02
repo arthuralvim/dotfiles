@@ -7,6 +7,24 @@ function datedir(){
     mkdir `date '+%Y-%m-%d'`
 }
 
+# kill process based on a file with its pid.
+function kfpid {
+    if [ -z "$1" ]; then
+        echo "Digite o caminho para o arquivo com o pid."
+    else
+        kill $(cat $1)
+    fi
+}
+
+# kill a group of pids based on a query.
+function kgpid {
+    if [ -z "$1" ]; then
+        echo "type the query."
+    else
+        ps auxww | grep $1 | awk '{print $2}' | xargs kill -9
+    fi
+}
+
 # create a django project using my project template
 make_django_project(){
     django-admin.py startproject --template=https://github.com/arthuralvim/django-boot-template/archive/master.zip --extension=py,env,html,gitignore --name=Procfile,Makefile $1
