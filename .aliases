@@ -86,6 +86,7 @@ alias zshcfg="subl ~/.zshrc"
 # apps
 alias elastic="elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
 alias rabbit="rabbitmq-server"
+alias nginx_test="nginx -c /etc/nginx/nginx.conf -t"
 alias redis="redis-server /usr/local/etc/redis.conf"
 
 # npm
