@@ -17,6 +17,7 @@
     templatedir = ~/.dotfiles/git/init_template
 [merge]
 	ff = only
+    tool = meld
 [alias]
     c = commit
     call = commit -A :/
