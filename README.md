@@ -1,16 +1,16 @@
-Introduction
-------------
+## Introduction
 
-These are my dotfiles and basic configuration files.
+These are my dotfiles + basic configuration files. Here I describe how I set my developer environment on my MacBook (or an Ubuntu machine). The steps below were tested on OS X Yosemite and Ubuntu 15.10.
 
 
-Installing
-----------
+## Installation (WIP)
 
-## Mac
-    make setup.mac (Not tested yet)
+```bash
+$ curl -L https://raw.github.com/arthuralvim/dotfiles/master/install | sh
+```
 
-## Ubuntu
-    sh setup-ubuntu.sh (Not tested yet)
 or
-    make setup.ubuntu (Not tested yet)
+
+```bash
+$ git clone https://github.com/arthuralvim/dotfiles.git && cd dotfiles && sh install.sh
+```
