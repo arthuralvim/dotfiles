@@ -48,11 +48,34 @@ alias -s py=subl
 alias ag="ansible-galaxy"
 
 function play {
+
+    if [ $# -lt 2 ]; then
+        echo "Please provide an inventory and play.\nEx: play dev site -l vagrant -t super" >&2
+        return 1
+    fi
+
+    local check_inventory="$(pwd)/inventories/$1/hosts"
+    local check_play="$(pwd)/playbooks/$2.yml"
+
+    echo "inventory: $check_inventory"
+    echo "play: $check_play"
+
+    if ! [ -f $check_inventory ]; then
+        echo "The inventory file was not found."
+        return 1
+    fi
+
+    if ! [ -f $check_play ]; then
+        echo "The play file was not found."
+        return 1
+    fi
+
     local check_extra_vars="$(pwd)/extra-vars.yml"
+
     if [ -f $check_extra_vars ]; then
-        ansible-playbook "$@" --extra-vars "@extra-vars.yml"
+        ansible-playbook --inventory-file=$check_inventory $check_play "${@:3}" --extra-vars "@extra-vars.yml"
     else
-        ansible-playbook "$@"
+        ansible-playbook --inventory-file=$check_inventory $check_play "${@:3}"
     fi
 }
 
