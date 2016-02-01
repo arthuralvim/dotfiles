@@ -1,10 +1,19 @@
 #!/bin/bash
 
-# check if code is pep8 compliant
+
+#
+# Checks if is there any python file.
+#
+
+printf "\n"
+
+#
+# Checks if code is pep8 compliant.
+#
 
 if ! type "pep8" > /dev/null 2>&1;
 then
-    echo "please install pep8! -> pip install pep8"
+    echo "Please install PEP8 tool! -> pip install pep8"
     exit 1
 fi
 
@@ -12,23 +21,30 @@ pep8=`pep8 --filename="*.py" --ignore=W --exclude="manage.py,settings.py,migrati
 
 if [ ${#pep8} -gt 0 ]
 then
-    echo "pep8 found errors!"
+    printf "* PEP8 found errors!"
     printf %s "$pep8"
     exit 1
 else
-    echo "pep8 ok!"
+    printf "* All code is PEP8 compliant."
 fi
 
-# check for debbuger entries
+#
+# Automatically checks for break points in python code.
+#
 
 pdb_check=$(git grep pdb -- '*.py')
+
 if [ ${#pdb_check} -gt 0 ]
 then
-        echo "COMMIT REJECTED: commit contains code with break points. Please remove before commiting."
-        echo $pdb_check
+        echo "* COMMIT REJECTED: commit contains code with break points. Please remove them from the files below before commiting."
+        echo "*---------------------*"
+        echo "${pdb_check}"
+        echo "*---------------------*"
         exit 1
 else
-        echo "break points ok!"
+        printf "* Code contains no break points."
 fi
+
+printf "\n\n"
 
 exit 0

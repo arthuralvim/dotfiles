@@ -1,5 +1,4 @@
-# Ticket-#999: summary commit message (50 chars)
-
+# {{ BRANCH_NAME }} summary commit message (50 chars)
 
 # Extended commit message. (Optional)
 
@@ -10,4 +9,6 @@
 # test: (adding missing tests, refactoring tests; no production code change):
 # wip: (wip on feature branch?)
 
+# -----------------------------------
 
+# [author: {{ AUTHOR_NAME }} ({{ AUTHOR_EMAIL }})]
