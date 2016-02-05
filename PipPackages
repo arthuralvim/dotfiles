@@ -5,6 +5,7 @@ ipdb==0.8
 ipython==3.1.0
 Glances==2.4.2
 pgcli==0.19.2
+pipdeptree==0.5.0
 pep257==0.5.0
 pep8==1.6.2
 pycrypto==2.6.1
