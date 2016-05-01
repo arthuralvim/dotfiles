@@ -1,0 +1,19 @@
+# This is a sample .condarc file
+# a condarc file should be placed in $HOME/.condarc
+
+always_yes: true
+
+show_channel_urls: True
+
+create_default_packages:
+  - ipython
+  - ipdb
+
+channels:
+  - http://repo.continuum.io/pkgs/free
+  - http://repo.continuum.io/pkgs/gpl
+  - http://repo.continuum.io/pkgs/pro
+  - pandas
+  - defaults
+  - pypi
+  - r
