@@ -109,3 +109,12 @@ function install_vim_settings() {
 function set_basic_permissions() {
     sudo chown $USER .pip
 }
+
+
+pipsi-upgrade() {
+        for i in $(ls .local/venvs)
+        do
+                .local/venvs/$i/bin/pip install -U pip wheel
+                pipsi upgrade $i
+        done
+}

@@ -1,4 +1,27 @@
 # exports
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+if [ -z "$INPUTRC" -a ! -f "$HOME/.inputrc" ]; then
+    INPUTRC=/etc/inputrc
+fi
+
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f ~/.bash_completion ]; then
+    . ~/.bash_completion
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # general
 export EMAIL=afmalvim@gmail.com

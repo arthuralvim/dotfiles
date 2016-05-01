@@ -155,6 +155,15 @@ alias jky='jekyll serve -w'
 # networking
 alias ipext='dig +short myip.opendns.com @resolver1.opendns.com'
 
+# mongo
+alias mongorun='mongod --config /usr/local/Cellar/mongodb/2.0.1-x86_64/mongod.conf &'
+
+# wheater
+alias weather-nyc='curl "http://wttr.in/New+York"'
+alias weather-rec='curl "http://wttr.in/Recife"'
+
+alias delpyc='find . -iname "*.pyc" -exec rm {} \; ; find . -type d -iname __pycache__ -exec rm -r {} \;'
+
 # utils
 alias -g gp='| grep -i'
 alias rm = 'rm -i'
