@@ -28,6 +28,7 @@ libpng
 libtiff
 libxml2
 libyaml
+logrotate
 mackup
 md5deep
 mplayer
