@@ -1,3 +1,5 @@
+aircrack-ng
+arp-scan
 asciinema
 autoconf
 autojump
@@ -8,6 +10,7 @@ cputhrottle
 ctags
 curl
 editorconfig
+ettercap
 faac
 ffmpeg
 flac
@@ -32,14 +35,17 @@ logrotate
 mackup
 md5deep
 mplayer
+nmap
 opencv
 openjpeg
 pdf-tools
 phantomjs
 pstree
 readline
+reaver
 rubber
 s3cmd
+subnetcalc
 swig
 tesseract
 thefuck
