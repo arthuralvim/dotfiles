@@ -1,44 +1,19 @@
 source common/functions.sh
 
-# update gems
-if which gem &> /dev/null; then
-    msg_checking "gem"
-    sudo gem update --system
-    echo "gem"
+if which python &> /dev/null; then
+    msg_checking "python"
+else
+    msg_install "python" "brew install python"
+    brew install python
+    brew install python3
+    brew install pypy
+    brew install pypy3
+    msg_ok "python"
 fi
 
-# capistrano
-if which cap &> /dev/null; then
-    msg_checking "capistrano"
-else
-    msg_install "capistrano" "gem install capistrano"
-    sudo gem install capistrano
-    msg_ok "capistrano"
-fi
+file_to_array "development/python/PipPackages"
 
-# compass
-if which compass &> /dev/null; then
-    msg_checking "compass"
-else
-    msg_install "compass" "gem install compass"
-    sudo gem install compass
-    msg_ok "compass"
-fi
-
-# chunky_png
-if which chunky_png &> /dev/null; then
-    msg_checking "chunky_png"
-else
-    msg_install "chunky_png" "gem install chunky_png"
-    sudo gem install chunky_png
-    msg_ok "chunky_png"
-fi
-
-# jekyll
-if which jekyll &> /dev/null; then
-    msg_checking "jekyll"
-else
-    msg_install "jekyll" "gem install jekyll"
-    sudo gem install jekyll
-    msg_ok "jekyll"
-fi
+for package in "${array[@]}"; do
+    msg_checking "python: pip ${package}"
+    pip install "$package"
+done

@@ -1,6 +1,5 @@
 source common/functions.sh
 
-# update gems
 if which gem &> /dev/null; then
     msg_checking "gem"
     sudo gem update --system
@@ -24,6 +23,8 @@ else
     sudo gem install compass
     msg_ok "compass"
 fi
+
+brew 'sassc'
 
 # chunky_png
 if which chunky_png &> /dev/null; then
