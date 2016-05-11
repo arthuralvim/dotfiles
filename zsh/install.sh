@@ -1,22 +1,36 @@
+#!/bin/bash
+
 source common/functions.sh
 
-# clone the neobundle plugin, to manage vim plugins
-if [ ! -d "$HOME/.vim/bundle/neobundle.vim/.git" ]; then
-    msg_installing "Installing neobundle..."
-    git clone git@github.com:Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim
+# zsh
+
+if which zsh &> /dev/null; then
+    msg_checking "zsh"
 else
-    msg_ok "neobundle is already installed."
+
+    if [ "$LINUX" = "linux" ]; then
+        msg_install "zsh" "apt-get install zsh"
+        apt-get install -y curl zsh
+        msg_ok "OK"
+    fi
+
+    if [ "$OSX" = "osx" ]; then
+        msg_install "zsh" "brew install zsh"
+        brew install 'curl'
+        brew install 'zsh'
+        brew install 'zsh-completions'
+        msg_ok "OK"
+    fi
+
+    git clone git://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
+
 fi
 
-# vim's plugins
-if [[ $OSX && `which vim 2> /dev/null` ]]; then
+# oh-my-zsh
 
-    msg_installing "Installing/Updating vim's plugins..."
-    vim -f +NeoBundleInstall +qall
-
-    if [ $? -eq 0 ]; then
-        msg_ok "vim's plugins updated successfuly.";
-    else
-        msg_alert "We had a problem while updating vim's plugins.";
-    fi
+if [ ! -L "$HOME/.zshrc" ]; then
+    msg_installing ".zshrc"
+    ln -s $DOTFILES_DIR/zsh/.zshrc $HOME/.zshrc
+    curl -L https://gist.githubusercontent.com/arthuralvim/c894bbe096ad4b856345/raw/cbf964e4d623bec2766dfffd47c43571868b819c/alvim.zsh-theme -o "$HOME/.oh-my-zsh/themes/alvim.zsh-theme"
+    # chsh -s /bin/zsh
 fi
