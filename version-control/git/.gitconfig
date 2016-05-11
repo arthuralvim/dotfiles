@@ -4,17 +4,12 @@
 [core]
     editor = subl -w
     autocrlf = input
-    excludesfile = ~/.global_ignore
 [color]
     ui = true
-[commit]
-    template = ~/.dotfiles/git/git-commit-template.txt
 [web]
   browser = google-chrome
 [github]
     user = arthuralvim
-[init]
-    templatedir = ~/.dotfiles/git/init_template
 [merge]
 	ff = only
     tool = meld
