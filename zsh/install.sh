@@ -29,7 +29,7 @@ fi
 # oh-my-zsh
 
 if [ ! -L "$HOME/.zshrc" ]; then
-    msg_installing ".zshrc"
+    msg_installing ".zshrc and theme"
     ln -s $DOTFILES_DIR/zsh/.zshrc $HOME/.zshrc
     curl -L https://gist.githubusercontent.com/arthuralvim/c894bbe096ad4b856345/raw/cbf964e4d623bec2766dfffd47c43571868b819c/alvim.zsh-theme -o "$HOME/.oh-my-zsh/themes/alvim.zsh-theme"
     # chsh -s /bin/zsh
