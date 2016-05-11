@@ -3,6 +3,7 @@
 source common/functions.sh
 
 # git
+
 if which git &> /dev/null; then
     msg_checking "git"
 else
@@ -20,12 +21,11 @@ else
         brew install meld
         msg_ok "OK"
     fi
-
 fi
 
 # .gitconfig
 
-if [ -f "version-control/git/.gitconfig" ]; then
+if [ ! -L "$HOME/.gitconfig" ]; then
     msg_installing ".gitconfig"
     ln -s $DOTFILES_DIR/version-control/git/.gitconfig $HOME/.gitconfig
     msg_installing ".git-commit-template"
