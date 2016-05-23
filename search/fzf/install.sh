@@ -24,13 +24,3 @@ else
         msg_ok "OK"
     fi
 fi
-
-# if [ ! -L "$HOME/.fzf.bash" ]; then
-#     msg_installing ".fzf.bash"
-#     ln -s $DOTFILES_DIR/search/fzf/.fzf.bash $HOME/.fzf.bash
-# fi
-
-# if [ ! -L "$HOME/.fzf.zsh" ]; then
-#     msg_installing ".fzf.zsh"
-#     ln -s $DOTFILES_DIR/search/fzf/.fzf.zsh $HOME/.fzf.zsh
-# fi

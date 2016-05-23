@@ -2,42 +2,50 @@ source common/functions.sh
 
 # homebrew
 
-if which brew &> /dev/null; then
-    msg_checking "homebrew"
-else
-    ok "Installing Homebrew!"
-    ok "https://github.com/mxcl/homebrew/wiki/installation"
-    msg_install "Homebrew" "ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    ok "OK"
+if [ "$LINUX" = "linux" ]; then
+    msg_alert "no homebrew on linux!"
 fi
 
-file_to_array "brew/Tapfile"
+if [ "$OSX" = "osx" ]; then
 
-for tap in "${array[@]}"; do
-    msg_checking "homebrew: tap ${tap}"
-    brew tap "$tap"
-done
+    if which brew &> /dev/null; then
+        msg_checking "homebrew"
+    else
+        ok "Installing Homebrew!"
+        ok "https://github.com/mxcl/homebrew/wiki/installation"
+        msg_install "Homebrew" "ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        ok "OK"
+    fi
 
-file_to_array "brew/Brewfile"
+    file_to_array "brew/Tapfile"
 
-for package in "${array[@]}"; do
-    msg_checking "homebrew: package ${package}"
-    brew install "$package"
-done
+    for tap in "${array[@]}"; do
+        msg_checking "homebrew: tap ${tap}"
+        brew tap "$tap"
+    done
 
-file_to_array "brew/Caskfile"
+    file_to_array "brew/Brewfile"
 
-for cask in "${array[@]}"; do
-    msg_checking "homebrew: cask ${cask}"
-    brew cask install --appdir="/Applications" "$cask"
-done
+    for package in "${array[@]}"; do
+        msg_checking "homebrew: package ${package}"
+        brew install "$package"
+    done
 
-# brew update
-# brew tap homebrew/bundle
-# brew bundle install --file=Brewfile
-# brew bundle install --file=Caskfile
+    file_to_array "brew/Caskfile"
 
-brew cleanup
-brew cask cleanup
+    for cask in "${array[@]}"; do
+        msg_checking "homebrew: cask ${cask}"
+        brew cask install --appdir="/Applications" "$cask"
+    done
+
+    # brew update
+    # brew tap homebrew/bundle
+    # brew bundle install --file=Brewfile
+    # brew bundle install --file=Caskfile
+
+    brew cleanup
+    brew cask cleanup
+
+fi
 

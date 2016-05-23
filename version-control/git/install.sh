@@ -9,6 +9,7 @@ if which git &> /dev/null; then
 else
     if [ "$LINUX" = "linux" ]; then
         msg_install "git" "apt-get install git git-core"
+        apt-get install -qq -y git git-core git-extras git-flow meld
         msg_ok "OK"
     fi
 

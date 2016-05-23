@@ -11,6 +11,4 @@ plugins=(bower brew common-aliases django extract git git-extras history httpie 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
-
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
-[[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"

@@ -9,26 +9,14 @@ msg ' \ \_\ \_\  \ \_\ \_\    \ \_\  \ \_\ \_\  \ \_____\  \ \_\ \_\     \ \_\ \
 msg '  \/_/\/_/   \/_/ /_/     \/_/   \/_/\/_/   \/_____/   \/_/ /_/      \/_/\/_/   \/_____/   \/_/      \/_/   \/_/  \/_/ '
 msg ''
 
-
-OSX=$(test "`uname`" == "Darwin" && echo "x")
-
-if [[ -d "$HOME/Dropbox/dotfiles" ]]; then
+if [[ -d "$DOTFILES_DIR" ]]; then
     msg_checking "Checking dotfiles directory"
 else
     msg_install "Cloning" "git@github.com:arthuralvim/dotfiles.git"
-    git clone git@github.com:arthuralvim/dotfiles.git $HOME/Dropbox/dotfiles
+    git clone https://github.com/arthuralvim/dotfiles.git $DOTFILES_DIR
     msg_ok "OK"
 fi
 
-# cd $HOME/Dropbox/dotfiles
+cd $DOTFILES_DIR
 
-sh brew/install.sh
-# sh common/install.sh
-# sh front/install.sh
-# sh git/install.sh
-# sh osx/install.sh
-# sh profile/install.sh
-# sh ruby/install.sh
-# sh sublime-text/install.sh
-# sh vim/install.sh
-# sh zsh/install.sh
+sh all/basic.sh

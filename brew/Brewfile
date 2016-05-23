@@ -35,6 +35,7 @@ logrotate
 mackup
 md5deep
 mplayer
+monit
 nmap
 opencv
 openjpeg
@@ -43,8 +44,8 @@ phantomjs
 pstree
 readline
 reaver
+riemann
 rubber
-s3cmd
 subnetcalc
 swig
 tesseract
