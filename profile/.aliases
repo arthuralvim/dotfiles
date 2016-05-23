@@ -15,8 +15,8 @@ alias ckc="cd $HOME/.cookiecutters"
 alias l="ls -a"
 alias ls='ls -G'
 alias lsh='ls -sh'
-alias la="ls -la"
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias la="ls -lha"
+alias lsd='ls -l | grep "^d"'
 
 # navigation
 alias ..="cd .."
@@ -25,10 +25,15 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # python
-alias ipy3="ipython3"
 alias ipy="ipython"
-alias py3="python3"
+alias ipy3="ipython3"
 alias pyt="python"
+alias py3="python3"
+alias pipin='pip install'
+alias pipf='pip freeze'
+alias asjson='python -m json.tool'
+alias pyserver='python -m SimpleHTTPServer'
+alias delpyc='find . -iname "*.pyc" -exec rm {} \; ; find . -type d -iname __pycache__ -exec rm -r {} \;'
 
 # python/django
 alias pym="python manage.py"
@@ -36,58 +41,18 @@ alias pymm="python manage.py migrate"
 alias pymr="python manage.py runserver"
 alias pyms="python manage.py shell"
 alias pymt="python manage.py test"
-alias pymapp="touch __init__.py admin.py models.py tests.py views.py urls.py"
-alias pipin='pip install'
-alias pipf='pip freeze'
-alias asjson='python -m json.tool'
-alias pyserver='python -m SimpleHTTPServer'
-alias -s py=subl
+alias pymod="touch __init__.py admin.py models.py tests.py views.py urls.py"
 
 # ansible
-
 alias ag="ansible-galaxy"
 
-function play {
+# docker
+alias dkr-cont-kall='printf "\n>>> Killing all running containers\n\n" && 'docker kill $(docker ps -q)'
+alias dkr-cont-kstop='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+alias dkr-img-delete-untagged='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+alias docker-clean='dkr-cont-kstop || true && dkr-img-delete-untagged'
 
-    if [ $# -lt 2 ]; then
-        echo "Please provide an inventory and play.\nEx: play dev site -l vagrant -t super" >&2
-        return 1
-    fi
-
-    local check_inventory="$(pwd)/inventories/$1/hosts"
-    local check_play="$(pwd)/playbooks/$2.yml"
-
-    echo "inventory: $check_inventory"
-    echo "play: $check_play"
-
-    if ! [ -f $check_inventory ]; then
-        echo "The inventory file was not found."
-        return 1
-    fi
-
-    if ! [ -f $check_play ]; then
-        echo "The play file was not found."
-        return 1
-    fi
-
-    local check_extra_vars="$(pwd)/extra-vars.yml"
-
-    if [ -f $check_extra_vars ]; then
-        ansible-playbook --inventory-file=$check_inventory $check_play "${@:3}" --extra-vars "@extra-vars.yml"
-    else
-        ansible-playbook --inventory-file=$check_inventory $check_play "${@:3}"
-    fi
-}
-
-function play-ping {
-    ansible "$@" -m ping
-}
-
-function play-setup {
-    ansible "$@" -m setup
-}
-
-# Vagrant
+# vagrant
 alias vaup="vagrant up"
 alias vaha="vagrant halt"
 alias vapro="vagrant provision"
@@ -96,6 +61,9 @@ alias vast="vagrant status"
 alias vash="vagrant ssh"
 alias vashc="vagrant ssh-config"
 alias valist="vagrant box list"
+
+# ruby
+alias sgi='sudo gem install --no-ri --no-rdoc'
 
 # git
 alias gpush='git push origin master'
@@ -111,6 +79,7 @@ alias elastic="elasticsearch --config=/usr/local/opt/elasticsearch/config/elasti
 alias rabbit="rabbitmq-server"
 alias nginx_test="nginx -c /etc/nginx/nginx.conf -t"
 alias redis="redis-server /usr/local/etc/redis.conf"
+alias mongorun='mongod --config /usr/local/Cellar/mongodb/2.0.1-x86_64/mongod.conf &'
 
 # npm
 alias nt='npm test'
@@ -155,16 +124,24 @@ alias jky='jekyll serve -w'
 # networking
 alias ipext='dig +short myip.opendns.com @resolver1.opendns.com'
 
-# mongo
-alias mongorun='mongod --config /usr/local/Cellar/mongodb/2.0.1-x86_64/mongod.conf &'
+if [[ $platform == 'linux' ]]; then
+  alias procports='netstat -tulpn'
+elif [[ $platform == 'darwin' ]]; then
+  alias procports='lsof -nPi -sTCP:LISTEN'
+  "lsof -i tcp:${PORT_NUMBER} | awk 'NR!=1 {print $2}' | xargs kill"
+fi
+
+alias ssh-pub-key='cat $HOME/.ssh/id_rsa.pub'
 
 # wheater
 alias weather-nyc='curl "http://wttr.in/New+York"'
 alias weather-rec='curl "http://wttr.in/Recife"'
 
-alias delpyc='find . -iname "*.pyc" -exec rm {} \; ; find . -type d -iname __pycache__ -exec rm -r {} \;'
+# env
+alias show-env-vars='printenv'
 
 # utils
+alias o="open"
 alias -g gp='| grep -i'
 alias rm = 'rm -i'
 alias usuarios="cut -d: -f1 /etc/passwd"
@@ -174,7 +151,33 @@ alias top='htop'
 alias youtube='youtube-dl -t'
 alias psg='ps aux | grep'
 alias ports='sudo lsof -i -P | grep -i "listen"'
+alias cls='clear;ls'
+
+# disk
 alias disk_usage='df -h'
+alias dush='du -sh'
 alias ducks='du -cks * | sort -rn | head -n 10'
 alias duha='du -ha * | sort -rn | head -n 10'
 
+# compress
+alias tf='tail -f'
+alias gz='tar -zcvf'
+
+# kill
+alias ka9='killall -9'
+alias k9='kill -9'
+
+# dns
+alias clear-dns-cache="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
+# homebrew
+alias brewdo="brew doctor"
+alias brewin="brew install"
+alias brewun="brew uninstall"
+alias brewse="brew search"
+alias brewcl="brew cleanup && brew cask cleanup"
+alias brewup="brew update && brew upgrade --all"
+
+# services
+# init-checkconf /etc/init/job.conf
+# initctl list

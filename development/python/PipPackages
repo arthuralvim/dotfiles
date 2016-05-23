@@ -12,6 +12,7 @@ pgcli==0.19.2
 pipdeptree==0.5.0
 pycrypto==2.6.1
 pyflakes==0.8.1
+pypi-cli==0.4.1
 virtualenv==12.1.1
 virtualenvwrapper==4.5.0
 httpie==0.9.3
