@@ -13,10 +13,10 @@ do
     if [ -L $HOME/.$file ]; then
         msg_installing "Updating $HOME/.$file"
         rm $HOME/.$file
-        ln -s $DOTFILES_DIR/.$file $HOME/.$file
+        ln -s $DOTFILES_DIR/profile/.$file $HOME/.$file
     else
         msg_installing "Installing $HOME/.$file"
-        ln -s $DOTFILES_DIR/$file $HOME/.$file
+        ln -s $DOTFILES_DIR/profile/.$file $HOME/.$file
     fi
 done
 unset file

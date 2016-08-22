@@ -4,6 +4,7 @@
 [core]
     editor = subl -w
     autocrlf = input
+	excludesfile = /Users/arthuralvim/Dropbox/dotfiles/version-control/git/.global_gitignore
 [color]
     ui = true
 [web]
@@ -30,3 +31,7 @@
     tree = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit
     pushall = push --recurse-submodules=on-demand
     s = status -s
+[commit]
+	template = /Users/arthuralvim/Dropbox/dotfiles/version-control/git/git-commit-template.txt
+[init]
+	templatedir = /Users/arthuralvim/Dropbox/dotfiles/version-control/git/init_template

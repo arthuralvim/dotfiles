@@ -46,12 +46,6 @@ alias pymod="touch __init__.py admin.py models.py tests.py views.py urls.py"
 # ansible
 alias ag="ansible-galaxy"
 
-# docker
-alias dkr-cont-kall='printf "\n>>> Killing all running containers\n\n" && 'docker kill $(docker ps -q)'
-alias dkr-cont-kstop='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
-alias dkr-img-delete-untagged='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
-alias docker-clean='dkr-cont-kstop || true && dkr-img-delete-untagged'
-
 # vagrant
 alias vaup="vagrant up"
 alias vaha="vagrant halt"
@@ -143,7 +137,7 @@ alias show-env-vars='printenv'
 # utils
 alias o="open"
 alias -g gp='| grep -i'
-alias rm = 'rm -i'
+alias rm='rm -i'
 alias usuarios="cut -d: -f1 /etc/passwd"
 alias c="clear"
 alias clipboard='pbcopy'
@@ -177,6 +171,8 @@ alias brewun="brew uninstall"
 alias brewse="brew search"
 alias brewcl="brew cleanup && brew cask cleanup"
 alias brewup="brew update && brew upgrade --all"
+
+eval "$(thefuck --alias)"
 
 # services
 # init-checkconf /etc/init/job.conf

@@ -12,3 +12,5 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

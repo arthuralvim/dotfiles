@@ -14,6 +14,6 @@ fi
 file_to_array "development/python/PipPackages"
 
 for package in "${array[@]}"; do
-    msg_checking "python: pip ${package}"
+    msg_checking "python: pip install ${package}"
     pip install "$package"
 done
