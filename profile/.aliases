@@ -146,6 +146,7 @@ alias youtube='youtube-dl -t'
 alias psg='ps aux | grep'
 alias ports='sudo lsof -i -P | grep -i "listen"'
 alias cls='clear;ls'
+alias deldss='find . -name '.DS_Store' -type f -delete'
 
 # disk
 alias disk_usage='df -h'

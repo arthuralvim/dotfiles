@@ -17,13 +17,14 @@ dirs_to_append=(
     "$(brew --prefix)/share/npm/bin"
     "/Applications/Postgres.app/Contents/Versions/latest/bin"
     "/Applications/MongoDB.app/Contents/Resources/Vendor/mongodb"
+    "/Applications/RabbitMQ.app/Contents/Resources/Vendor/rabbitmq/sbin"
+    "/Applications/Redis.app/Contents/Resources/Vendor/redis/bin"
     "/usr/textbin"
     "/opt/X11/bin"
 )
 
 # Prepend directories to PATH
 for index in "${(@k)dirs_to_prepend}"; do
-    echo "$index";
     if [ -d "$index" ]; then
         # If these directories exist, then prepend them to existing PATH
         PATH="$index:$PATH"
