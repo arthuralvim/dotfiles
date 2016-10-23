@@ -14,7 +14,8 @@
 
 export OSX=$(test "`uname`" == "Darwin" && echo "osx")
 export LINUX=$(test "`uname`" == "Linux" && echo "linux")
-export DOTFILES_DIR="$HOME/Dropbox/dotfiles"
+export DOTFILES_DIR="$HOME/.dotfiles"
+now=$(date +"%m_%d_%Y__%H_%M_%S")
 
 function print { echo -e "\033[1;32m=> $1\033[0m"; }
 function msg_checking { echo -e "\033[1;32m=> $1 ✔\033[0m"; }

@@ -3,8 +3,8 @@
 # general
 export EMAIL=afmalvim@gmail.com
 export EDITOR=subl
-export DROPBOX_HOME=$HOME/Dropbox
-export DOTFILES_DIR="$DROPBOX_HOME/.dotfiles"
+export DROPBOX_HOME=$HOME
+export DOTFILES_DIR="$HOME/.dotfiles"
 export PROJECT_HOME=$DROPBOX_HOME/Work
 
 # encoding

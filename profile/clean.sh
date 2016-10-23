@@ -2,19 +2,17 @@
 
 source common/functions.sh
 
-# profile/install.sh
-
-source profile/clean.sh
+# profile/clean.sh
 
 for file in {aliases,bashrc,exports,extra,functions,paths,inputrc,profile};
 do
-    if [ -L $HOME/.$file ]; then
-        msg_installing "Updating $HOME/.$file"
+    if [ -f $HOME/.$file ]; then
         rm $HOME/.$file
-        ln -s $DOTFILES_DIR/profile/.$file $HOME/.$file
-    else
-        msg_installing "Installing $HOME/.$file"
-        ln -s $DOTFILES_DIR/profile/.$file $HOME/.$file
+    fi
+
+    if [ -L $HOME/.$file ]; then
+        msg_alert "Updating $HOME/.$file"
+        rm $HOME/.$file
     fi
 done
 unset file

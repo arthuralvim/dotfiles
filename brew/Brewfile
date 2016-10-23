@@ -39,7 +39,7 @@ monit
 nmap
 opencv
 openjpeg
-pdf-tools
+mupdf-tools
 phantomjs
 pstree
 readline
