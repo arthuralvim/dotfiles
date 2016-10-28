@@ -18,9 +18,8 @@ else
 
     if [ "$OSX" = "osx" ]; then
         msg_install "zsh" "brew install fzf"
-        brew install 'fzf'
-        cd `$(brew --prefix)/opt/fzf/`
-        sh install
+        brew install fzf
+        sh $(brew --prefix)/opt/fzf/install
         msg_ok "OK"
     fi
 fi

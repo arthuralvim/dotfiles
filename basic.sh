@@ -9,14 +9,8 @@ msg ' \ \_\ \_\  \ \_\ \_\    \ \_\  \ \_\ \_\  \ \_____\  \ \_\ \_\     \ \_\ \
 msg '  \/_/\/_/   \/_/ /_/     \/_/   \/_/\/_/   \/_____/   \/_/ /_/      \/_/\/_/   \/_____/   \/_/      \/_/   \/_/  \/_/ '
 msg ''
 
-if [[ -d "$DOTFILES_DIR" ]]; then
-    msg_checking "Checking dotfiles directory"
-else
-    msg_install "Cloning" "git@github.com:arthuralvim/dotfiles.git"
-    git clone https://github.com/arthuralvim/dotfiles.git $DOTFILES_DIR
-    msg_ok "OK"
-fi
-
-cd $DOTFILES_DIR
-
-sh all/basic.sh
+sh brew/basic.sh
+sh zsh/install.sh
+sh search/fzf/install.sh
+sh version-control/git/install.sh
+sh profile/install.sh

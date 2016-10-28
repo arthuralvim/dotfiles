@@ -16,5 +16,3 @@ do
     fi
 done
 unset file
-
-msg_alert "For use on this session, type: source ~/.bashrc or ~/.zshrc"

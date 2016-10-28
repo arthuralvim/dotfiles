@@ -25,6 +25,13 @@ if [ "$OSX" = "osx" ]; then
         brew tap "$tap"
     done
 
+    file_to_array "brew/CaskfileBasic"
+
+    for cask in "${array[@]}"; do
+        msg_checking "homebrew: cask ${cask}"
+        brew cask install --appdir="/Applications" "$cask"
+    done
+
     brew cleanup
     brew cask cleanup
 

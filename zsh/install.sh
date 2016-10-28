@@ -22,7 +22,6 @@ else
         msg_ok "OK"
     fi
 
-
 fi
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -45,10 +44,6 @@ else
     ln -s $DOTFILES_DIR/zsh/.zshrc $HOME/.zshrc
 fi
 
-
-# MYSHELL=$(ps | grep `echo $$` | awk '{ print $4 }')
-
-# if [ ! "$MYSHELL" = "zsh" ]; then
-#     chsh -s /bin/zsh
-#     /bin/zsh
-# fi
+if [ ! "$SHELL" = "/bin/zsh" ]; then
+    chsh -s /bin/zsh
+fi

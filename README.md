@@ -1,59 +1,75 @@
-# INTRODUCTION
+Welcome to the Arthur's dotfiles wiki!
 
-These are my dotfiles + basic configuration files. Here I describe
-how I set my developer environment (OS X El Capitan or Linux Ubuntu).
-The steps below were tested on OS X El Capitan and Ubuntu 16.04 (still WIP).
+## Introduction
 
-# DOTFILES
+These are my dotfiles + basic configuration files. Here I describe how I set my developer environment on my MacBook (or an Ubuntu machine). The steps below were tested on macOS Sierra and Ubuntu 16.04 (still WIP).
 
-## INSTALLATION
 
-```bash
-$ curl -L https://raw.github.com/arthuralvim/dotfiles/master/install | sh
-```
+## First Steps
 
-or
+- Get your credentials and login into AppStore .
+- Install XCode (AppStore) and accept license. ```sudo xcodebuild -license accept``
+- Install Git.
+- Install Brew. ```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
 
-```bash
-$ git clone https://github.com/arthuralvim/dotfiles.git && cd dotfiles && sh all/install.sh
-```
 
-### Requirements
+## Installation
 
-* Git
-
-## HOW TO RUN
 
 ```bash
-$ sh all/install
+$ git clone https://github.com/arthuralvim/dotfiles.git && cd .dotfiles
 ```
 
-Also you can install some modules individually. Example:
+- [ ] Basic Installation: `sh basic.sh`
+- [ ] Developer Installation: `sh dev.sh`
+- [ ] Full Installation: `sh all.sh`
 
-```bash
-$ sh version-control/git/install.sh
-$ sh zsh/install.sh
-$ sh profile/install.sh
-$ sh search/fzf/install.sh
-```
+## Checklist
 
-## PROFILE
+- [ ] OSX:
+    - [ ] [Deactivate SIP (System Integrity Protection)](http://totalfinder.binaryage.com/system-integrity-protection)
+     You must boot into the Recovery OS. You do this by restarting your machine, and holding COMMAND + R until the Apple logo appears. Then select Terminal from the Utilities menu. Run ```csrutil enable --without debug```.
 
-Basic dotfiles installation.
+- [ ] Fuzzy Search (answer y to all)
 
-* Copy dotfiles.
-* Change default shell to zsh: `chsh -s /bin/zsh`.
-* Install Fuzzy Finder.
+- [ ] Set up Dropbox
 
-## DOCKER
+- [ ] Copy ssh keys
 
-```bash
-$ docker pull ubuntu
-$ docker build -t arthur/dotfiles .
-$ docker run -i -t arthur/dotfiles /bin/bash
-```
+- [ ] Set personal shortcuts
 
-## ACKNOWLEDGEMENT
+- [ ] Trackpad Settings
+    - [ ] Tap to click
+
+- [ ] Configure Menumeters
+    - [ ] Show CPU (Graph and show average for multiple processors)
+    - [ ] Show Memory (Used/Free Totals)
+    - [ ] Show Network (Throughput)
+
+- [ ] Configure Itsycal or Day-O with this regex `E d MMMM Y - H:mm`.
+
+- [ ] Download and add the fonts below
+	- [ ] Menlo
+    - [ ] Inconsolata
+	- [ ] Source Code Pro
+
+- [ ] Configure Sublime Text
+	- [ ] Install Package Control
+	- [ ] Install Settings
+	- [ ] Install Packages
+
+- [ ] Dock
+    - [ ] Organize icons
+    - [ ] Automatically hide and show (alt-option + command + d)
+    - [ ] Lock it with Deeper
+
+- [ ] Add key licenses for the software below:
+    - [ ] TotalFinder
+    - [ ] Alfred 2
+    - [ ] Hazel
+    - [ ] Sublime Text
+
+## Acknowledgement
 
 I have mainly rewrote [Davidson Fellipe](https://github.com/davidsonfellipe)'s [dotfile](https://github.com/davidsonfellipe/dotfiles)
 but was inspired by all theses guys:
