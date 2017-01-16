@@ -227,6 +227,63 @@ function play {
     fi
 }
 
+function git_remote_https_2_ssh {
+
+    if [[ -n "$1" ]]; then
+        local repo_full=$(git remote get-url "$1")
+    else
+        local repo_full="$(git remote get-url origin)"
+    fi
+
+    local user="$(echo $repo_full | cut -d "/" -f 4)"
+    local repo="$(echo $repo_full | cut -d "/" -f 5)"
+
+    if [[ -z "$user" ]]; then
+        echo "The user was not found."
+        return 1
+    fi
+
+    if [[ -z "$repo" ]]; then
+        echo "The repository was not found."
+        return 1
+    fi
+
+    if [[ -n "$1" ]]; then
+        git remote set-url $1 git@github.com:$user/$repo
+    else
+        git remote set-url origin git@github.com:$user/$repo
+    fi
+}
+
+function git_remote_ssh_2_https {
+
+    if [[ -n "$1" ]]; then
+        local repo_full=$(git remote get-url "$1")
+    else
+        local repo_full="$(git remote get-url origin)"
+    fi
+
+    local repo_full="$(echo $repo_full | cut -d ":" -f 2)"
+    local user="$(echo $repo_full | cut -d "/" -f 1)"
+    local repo="$(echo $repo_full | cut -d "/" -f 2)"
+
+    if [[ -z "$user" ]]; then
+        echo "The user was not found."
+        return 1
+    fi
+
+    if [[ -z "$repo" ]]; then
+        echo "The repository was not found."
+        return 1
+    fi
+
+    if [[ -n "$1" ]]; then
+        git remote set-url $1 https://github.com/$user/$repo
+    else
+        git remote set-url origin https://github.com/$user/$repo
+    fi
+}
+
 function nrmod {
-    stat --format '%a'
+    stat -f '%A'
 }
