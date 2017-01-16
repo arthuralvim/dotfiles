@@ -11,6 +11,7 @@ fi
 # vim's plugins
 if [[ $OSX && `which vim 2> /dev/null` ]]; then
 
+    ln -s $DOTFILES_DIR/vim/.vimrc $HOME/.vimrc
     msg_installing "Installing/Updating vim's plugins..."
     vim -f +NeoBundleInstall +qall
 

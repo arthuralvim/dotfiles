@@ -2,13 +2,13 @@ Welcome to the Arthur's dotfiles wiki!
 
 ## Introduction
 
-These are my dotfiles + basic configuration files. Here I describe how I set my developer environment on my MacBook (or an Ubuntu machine). The steps below were tested on macOS Sierra and Ubuntu 16.04 (still WIP).
+These are my dotfiles + basic configuration files. Here I describe how I set my developer environment on my MacBook (or an Ubuntu machine). The steps below were tested on macOS Sierra (still WIP for Ubuntu 16.10).
 
 
 ## First Steps
 
 - Get your credentials and login into AppStore .
-- Install XCode (AppStore) and accept license. ```sudo xcodebuild -license accept``
+- Install XCode (AppStore) and accept license. ```xcode-select --install and sudo xcodebuild -license accept``
 - Install Git.
 - Install Brew. ```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
 
@@ -59,7 +59,18 @@ $ git clone https://github.com/arthuralvim/dotfiles.git && cd .dotfiles
 	- [ ] Install Packages
 
 - [ ] Dock
-    - [ ] Organize icons
+    - [ ] Organize Apps
+        - [ ] Finder
+        - [ ] Google Chrome
+        - [ ] Sublime Text 3
+        - [ ] Slack
+        - [ ] iTerm 2
+        - [ ] Spotify
+        - [ ] Photos
+        - [ ] VLC
+        - [ ] App Store
+        - [ ] LauchPad
+        - [ ] Siri
     - [ ] Automatically hide and show (alt-option + command + d)
     - [ ] Lock it with Deeper
 

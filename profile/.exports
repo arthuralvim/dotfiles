@@ -12,10 +12,10 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # history
-export FIGNORE=DS_Store
+export FIGNORE=.DS_Store
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth:erasedups
 
 # brew
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/opt/homebrew-cask/Caskroom"
@@ -23,15 +23,15 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/opt/homebrew-cask/
 # node
 export NODE_PATH="/usr/local/lib/node_modules"
 
-# virtualenvwrapper
-if [ -f $(which virtualenvwrapper.sh) ]; then
-    export VENVWRAP=$(which virtualenvwrapper.sh)
-fi
-
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='subl'
 else
   export EDITOR='subl'
+fi
+
+# virtualenvwrapper
+if [ -f $(which virtualenvwrapper.sh) ]; then
+    export VENVWRAP=$(which virtualenvwrapper.sh)
 fi
 
 if [ -f $VENVWRAP ]; then

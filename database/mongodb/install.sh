@@ -13,12 +13,9 @@ else
 
     if [ "$OSX" = "osx" ]; then
         msg_install "mongodb" "brew install mongodb"
-        brew install mongodb
+        brew cask install mongodb
+        brew cask install mongodb-compass
+        brew cask install robomongo
         msg_ok "OK"
     fi
 fi
-
-# sudo mkdir -p /data/db
-# ls -ld /data/db/
-# sudo chmod 0755 /data/db
-# sudo chown mongod:mongod /data/db

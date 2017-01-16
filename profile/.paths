@@ -15,6 +15,7 @@ dirs_to_append=(
     "$(brew --prefix)/heroku/bin"
     "$(brew --prefix)/git/bin"
     "$(brew --prefix)/share/npm/bin"
+    "/usr/local/opt/go/libexec/bin"
     "/Applications/Postgres.app/Contents/Versions/latest/bin"
     "/Applications/MongoDB.app/Contents/Resources/Vendor/mongodb"
     "/Applications/RabbitMQ.app/Contents/Resources/Vendor/rabbitmq/sbin"

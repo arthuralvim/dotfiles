@@ -13,12 +13,13 @@ else
 
     if [ "$OSX" = "osx" ]; then
         msg_install "postgresql" "brew install postgresql"
+        brew cask install pgadmin4
+        brew cask install pgweb
+        brew cask install postgres
         brew install pgbadger
         brew install pgbouncer
         brew install pgcli
-        brew install pgformatter
         brew install postgis
-        brew install postgresql
         msg_ok "OK"
     fi
 fi

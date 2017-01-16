@@ -29,8 +29,9 @@
     - [ ] Lower Left → `crtl + shift + 2`
     - [ ] Upper Right → `crtl + shift + 3`
     - [ ] Lower Right → `crtl + shift + 4`
-    
-- [ ] Configure iTerm 2
+
+- [ ] Configure iTerm 2 manually (or you can copy /profile/iterm2/com.googlecode.iterm2.plist to
+~/Library/Application Support/iTerm2/DynamicProfiles and restore it)
     - [ ] Set font to Inconsolata and size 18
     - [ ] Change default Shortcuts
         - [ ] action: Previous Tab → `⌘⌥←`
