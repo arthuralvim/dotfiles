@@ -35,6 +35,14 @@ alias asjson='python -m json.tool'
 alias pyserver='python -m SimpleHTTPServer'
 alias delpyc='find . -iname "*.pyc" -exec rm {} \; ; find . -type d -iname __pycache__ -exec rm -r {} \;'
 
+# pyenv
+alias pyenvs="pyenv install -l"
+alias pyvienvs="pyenv virtualenvs"
+
+# virtualenvwrapper
+alias mkvirtualenv3="mkvirtualenv -p python3"
+alias mkvirtualenv2="mkvirtualenv -p python2"
+
 # python/django
 alias pym="python manage.py"
 alias pymm="python manage.py migrate"
