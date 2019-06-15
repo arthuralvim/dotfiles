@@ -7,6 +7,22 @@ function datedir(){
     mkdir `date '+%Y-%m-%d'`
 }
 
+function git_backup(){
+    git clone $1
+    cd `basename ${1} .git`
+    git_fetch_all_branches
+    echo "=========== BRANCHES"
+    git branch -a
+    echo "===================="
+    cd ..
+}
+
+function git_fetch_all_branches(){
+    git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+    git fetch --all
+    git pull --all
+}
+
 function mkcd () {
     mkdir -p "$@" && cd "$@"
 }

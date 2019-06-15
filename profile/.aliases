@@ -4,19 +4,20 @@
 alias home="cd $HOME"
 alias work="cd $PROJECT_HOME"
 alias drp="cd $HOME/Dropbox"
+alias dotfiles="cd $HOME/.dotfiles"
+alias dotfiles.open="subl $HOME/.dotfiles"
 alias dwl="cd $HOME/Downloads"
 alias doc="cd $HOME/Documents"
 alias pic="cd $HOME/Pictures"
 alias mov="cd $HOME/Movies"
 alias mus="cd $HOME/Music"
 alias ckc="cd $HOME/.cookiecutters"
+alias hm="homeshick"
 
 # list
-alias l="ls -a"
-alias ls='ls -G'
-alias lsh='ls -sh'
-alias la="ls -lha"
-alias lsd='ls -l | grep "^d"'
+alias ls="ls -Glha"
+alias lsd='ls -Glha | grep "^d"'
+alias lsf='ls -GSlha | grep "^-"'
 
 # navigation
 alias ..="cd .."
@@ -50,9 +51,21 @@ alias pymr="python manage.py runserver"
 alias pyms="python manage.py shell"
 alias pymt="python manage.py test"
 alias pymod="touch __init__.py admin.py models.py tests.py views.py urls.py"
+alias grepipdb="grep -n 'import ipdb;' -R . | grep -v '#'"
+
+#httpie
+alias 'GET=http -v GET'
+alias 'POST=http -v POST'
+alias 'PUT=http -v PUT'
+alias 'PATCH=http -v PATCH'
+alias 'DELETE=http -v DELETE'
+alias 'OPTION=http -v OPTION'
 
 # ansible
 alias ag="ansible-galaxy"
+
+# touch
+alias touchall="find . -exec touch {} \;"
 
 # vagrant
 alias vaup="vagrant up"
@@ -71,6 +84,8 @@ alias sgi='sudo gem install --no-ri --no-rdoc'
 alias gpush='git push origin master'
 alias gpull='git pull --ff-only origin master'
 alias gcl="git ls-files | xargs wc -l"
+alias gc='git commit'
+alias gcv='git commit --no-verify'
 
 # ohmyzsh
 alias ohmyzsh="subl ~/.oh-my-zsh"

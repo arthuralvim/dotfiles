@@ -5,10 +5,14 @@ export EMAIL=afmalvim@gmail.com
 export EDITOR=subl
 export DROPBOX_HOME=$HOME
 export DOTFILES_DIR="$HOME/.dotfiles"
+
+[ -d $DROPBOX_HOME/Work ] || mkdir -p $DROPBOX_HOME/Work
 export PROJECT_HOME=$DROPBOX_HOME/Work
 
-[ -d $HOME/.virtualenvs ] || mkdir -p $HOME/.virtualenvs
-export WORKON_HOME=$HOME/.virtualenvs
+export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+export ANDROID_HOME=/opt/homebrew-cask/Caskroom/android-sdk/3859397,26.0.2
+
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 # encoding
 export LANG="en_US.UTF-8"
@@ -21,7 +25,7 @@ export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoreboth:erasedups
 
 # brew
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/opt/homebrew-cask/Caskroom"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # node
 export NODE_PATH="/usr/local/lib/node_modules"
@@ -34,28 +38,36 @@ fi
 
 # pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-if [[ -f $(which pyenv) ]]; then
-    eval "$(pyenv init -)"
-fi
 
-# pyenv virtualenvwrapper
-if [[ -f $(which pyenv-virtualenvwrapper) ]]; then
-    pyenv virtualenvwrapper_lazy
-fi
+# virtualenvwrapper
+# if [ -f $(which virtualenvwrapper.sh) ]; then
+#     export VENVWRAP=$(which virtualenvwrapper.sh)
+# fi
 
-# virtualenv
-export VIRTUALENV_USE_DISTRIBUTE=true
+# if [ -f $VENVWRAP ]; then
+    # virtualenvwrapper
+    # make sure env directory exists; else create it
+    [ -d $HOME/.virtualenvs ] || mkdir -p $HOME/.virtualenvs
+    export WORKON_HOME=$HOME/.virtualenvs
+    # source $VENVWRAP
 
-# virtualenv wrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--distribute --no-site-packages"
 
-# pip
-export PIP_REQUIRE_VIRTUALENV=false
-export PIP_RESPECT_VIRTUALENV=true
-[ -d $HOME/.pip/cache ] || mkdir -p $HOME/.pip/cache
-export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+    # pip
+    export PIP_REQUIRE_VIRTUALENV=false
+    export PIP_RESPECT_VIRTUALENV=true
+    [ -d $HOME/.pip/cache ] || mkdir -p $HOME/.pip/cache
+    export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+    [ -d $HOME/.pip/pyenv/cache ] || mkdir -p $HOME/.pip/pyenv/cache
+    export PYENV_DOWNLOAD_CACHE=$HOME/.pip/cache
+# fi
 
+export PIPENV_CACHE_DIR=$HOME/.pipenv/cache
+# export PIP_NO_CACHE_DIR=true
 # rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+export AWS_SHARED_CREDENTIALS_FILE=/Users/arthuralvim/.aws/credentials

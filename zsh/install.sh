@@ -26,6 +26,8 @@ fi
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   git clone git://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
+  git clone https://github.com/rutchkiwi/copyzshell.git "$HOME/.oh-my-zsh/plugins/copyzshell"
+  git clone https://github.com/tarjoilija/zgen.git "$HOME/.zgen"
 fi
 
 if [ -f "$HOME/.oh-my-zsh/themes/alvim.zsh-theme" ]; then
@@ -35,11 +37,13 @@ else
     curl -L https://gist.githubusercontent.com/arthuralvim/c894bbe096ad4b856345/raw/cbf964e4d623bec2766dfffd47c43571868b819c/alvim.zsh-theme -o "$HOME/.oh-my-zsh/themes/alvim.zsh-theme"
 fi
 
+
 if [ -L "$HOME/.zshrc" ]; then
     msg_ok ".zshrc OK (reinstall + backuping old one)"
     mv $HOME/.zshrc "$HOME/.zshrc.$now.backup"
     ln -s $DOTFILES_DIR/zsh/.zshrc $HOME/.zshrc
-else 
+    ln -s $DOTFILES_DIR/zsh/.zshenv $HOME/.zshenv
+else
     msg_installing ".zshrc"
     ln -s $DOTFILES_DIR/zsh/.zshrc $HOME/.zshrc
 fi

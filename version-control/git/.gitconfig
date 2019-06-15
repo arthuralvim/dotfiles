@@ -5,6 +5,7 @@
     editor = subl -w
     autocrlf = input
 	excludesfile = /Users/arthuralvim/.dotfiles/version-control/git/.global_gitignore
+	pager = cat
 [color]
     ui = true
 [web]
@@ -35,3 +36,8 @@
 	template = /Users/arthuralvim/.dotfiles/version-control/git/git-commit-template.txt
 [init]
 	templatedir = /Users/arthuralvim/.dotfiles/version-control/git/init_template
+[credential]
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true
+[pager]
+	branch = false
