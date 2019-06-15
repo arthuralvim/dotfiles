@@ -1,3 +1,9 @@
+[submodule "fonts/source-code-pro"]
+	path = fonts/source-code-pro
+	url = https://github.com/adobe-fonts/source-code-pro.git
+[submodule "fonts/meslo-font"]
+	path = fonts/meslo-font
+	url = http://github.com/andreberg/Meslo-Font.git
 [submodule "fonts/google-fonts"]
     path = fonts/google
     url = http://github.com/google/fonts.git

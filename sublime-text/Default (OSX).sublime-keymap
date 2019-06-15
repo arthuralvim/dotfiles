@@ -1,0 +1,20 @@
+[
+    { "keys": ["alt+shift+1"], "command": "move_to_group", "args": { "group": 0 } },
+    { "keys": ["alt+shift+2"], "command": "move_to_group", "args": { "group": 1 } },
+    { "keys": ["alt+shift+3"], "command": "move_to_group", "args": { "group": 2 } },
+    { "keys": ["alt+shift+4"], "command": "move_to_group", "args": { "group": 3 } },
+    { "keys": ["alt+shift+5"], "command": "move_to_group", "args": { "group": 4 } },
+    { "keys": ["alt+shift+6"], "command": "move_to_group", "args": { "group": 5 } },
+    { "keys": ["alt+shift+7"], "command": "move_to_group", "args": { "group": 6 } },
+    { "keys": ["alt+shift+8"], "command": "move_to_group", "args": { "group": 7 } },
+    { "keys": ["alt+shift+9"], "command": "move_to_group", "args": { "group": 8 } },
+    { "keys": ["ctrl+w"], "command": "run_build", "args":{"build_system":"Packages/User/chrome-preview.sublime-build"}},
+    { "keys": ["ctrl+shift+b"], "command": "run_build", "args":{"build_system":"Packages/User/Bibtex.sublime-build"}},
+    { "keys": ["ctrl+shift+l"], "command": "run_build", "args":{"build_system":"Packages/User/PDFLatex.sublime-build"}},
+    { "keys": ["ctrl+shift+h"], "command": "run_build", "args":{"build_system":"Packages/User/CleanTexFiles.sublime-build"}},
+    { "keys": ["f8"], "command": "permute_lines", "args": {"operation": "unique"} },
+    { "keys": ["ctrl+alt+shift+l"], "command": "delete_blank_lines", "args": { "surplus": true } },
+    { "keys": ["ctrl+alt+l"], "command": "delete_blank_lines", "args": { "surplus": false } },
+    { "keys": ["alt+shift+c"], "command": "git_commit_amend",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "text.git-status"}]}
+]

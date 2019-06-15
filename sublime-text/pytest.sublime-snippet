@@ -1,0 +1,68 @@
+<snippet>
+    <content><![CDATA[
+import pytest
+
+
+@pytest.mark.parametrize('input, expected', [
+    ('2 + 3', 5),
+    ('6 - 4', 2),
+    pytest.mark.xfail(('5 + 2', 8))
+])
+def test_equations(input, expected):
+    """Test that equation works"""
+    assert eval(input) == expected
+
+
+def setup_module(module):
+    """Run at the start of a testing module (module)"""
+    pass
+
+
+def teardown_module(module):
+    """Run at the end of a testing module (file)"""
+    pass
+
+
+class TestPyTestClass(object):
+
+    @classmethod
+    def setup_class(cls):
+        """Setup the class"""
+        pass
+
+    @classmethod
+    def teardown_class(cls):
+        """Teardown the class"""
+        pass
+
+    def setup_method(method):
+        """Setup a method"""
+        pass
+
+    def teardown_method(method):
+        """Teardown a method"""
+        pass
+
+    @pytest.mark.parametrize('input, expected', [
+        ('2 + 3', 5),
+        ('6 - 4', 2),
+        pytest.mark.xfail(('5 + 2', 8))
+    ])
+    def test_equations(self, input, expected):
+        """Test that equation works"""
+        assert eval(input) == expected
+
+
+def setup_function(function):
+    """Setup a function"""
+    pass
+
+
+def teardown_function(function):
+    """Teardown a function"""
+    pass
+
+]]></content>
+    <tabTrigger>pytestfile</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

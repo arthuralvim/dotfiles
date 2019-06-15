@@ -1,0 +1,13 @@
+awscli
+black
+cookiecutter
+fabric
+flake8
+Glances
+httpie
+pipenv
+pycodestyle
+rows
+virtualenv
+virtualenvwrapper
+youtube-dl

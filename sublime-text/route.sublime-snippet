@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+url(r'^${1:pattern}\$',
+     '${2:view}',
+     name='${3:name}'),
+]]></content>
+    <tabTrigger>route</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

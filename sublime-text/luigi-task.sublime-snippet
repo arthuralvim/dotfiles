@@ -1,0 +1,28 @@
+<snippet>
+    <content><![CDATA[
+class ${1:NewTask}(luigi.Task):
+
+    param = luigi.Parameter()
+    bool_param = luigi.BoolParameter()
+    int_param = luigi.IntParameter()
+    float_param = luigi.FloatParameter()
+    date_param = luigi.DateParameter()
+    datehour_param = luigi.DateHourParameter()
+    timedelta_param = luigi.TimeDeltaParameter()
+    insignificant_param = luigi.Parameter(significant=False)
+
+    def requires(self):
+        return OtherTask(self.param)
+
+    def run(self):
+        pass
+
+    def output(self):
+        return luigi.LocalTarget('./output/state.txt')
+
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>luigitask</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.python</scope>
+</snippet>

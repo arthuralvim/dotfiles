@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+url(r'^${1:pattern}\$',
+    include('${2:app}.urls',
+            namespace='${3:name}')),
+]]></content>
+    <tabTrigger>include</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

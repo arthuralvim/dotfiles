@@ -1,0 +1,426 @@
+$(aws ecr get-login --no-include-email --region us-east-1)
+ab -n 10000 -c 50  -k google.com.br/
+alembic current
+alembic history
+alembic init alembic
+alembic revision --autogenerate -m "<message>"
+alembic stamp
+alembic stamp head
+alembic upgrade head
+ansible-playbook
+ansible-playbook --version
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod"
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --check
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --dry-run
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --list-hosts
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --list-tasks
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --skip-tags <tag1,tag2,tag3>
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --start-at-task="<title-of-the-task>"
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --tags <tag1,tag2,tag3>
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --verbose 4
+ansible-playbook -i <inventory> <playbook>.yml -l <limit>  -e "version=master environ=prod"
+aws configure
+aws dynamodb list-tables
+aws ec2 authorize-security-group-ingress --group-name <group-name> --protocol tcp --port <port_number> --cidr 0.0.0.0/0
+aws ec2 create-key-pair --key-name <key-name> --query 'KeyMaterial' --output text > ~/.ssh/<key-name>.pem
+aws ec2 create-security-group --group-name <group-name> --description "<description>"
+aws ec2 create-security-group --group-name <segurity-group-name> --description "<description>"
+aws ec2 delete-key-pair --key-name <key-name>
+aws ec2 describe-availability-zones --region us-east-1
+aws ec2 describe-images --image-ids <ami-00000000000000000>
+aws ec2 describe-instances --filters "Name=tag:<tag-name>,Values=<tag-value>" --query "Reservations[*].Instances[*].InstanceId" --output text --profile <awsprofile>
+aws ec2 describe-instances --filters "Name=tag:<tag-name>,Values=<tag-value>" --query "Reservations[*].Instances[*].PublicIpAddress" --output text --profile <awsprofile>
+aws ec2 run-instances --image-id ami-09479453c5cde9639 --key-name <key-name> --security-groups <security-group-name> --instance-type <instance-type> --placement AvailabilityZone=us-east-1a --block-device-mappings "[{\"DeviceName\":\"/dev/xvda\",\"Ebs\":{\"VolumeSize\":30,\"DeleteOnTermination\":true}}]" --tag-specifications 'ResourceType=instance,Tags=[{Key=<tag-name>,Value=<tag-value>}]' --count 1
+aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances --filters  "Name=tag:<tag-name>,Values=<tag-value>" --query "Reservations[].Instances[].[InstanceId]" --output text | tr '\n' ' ')
+aws ec2 terminate-instances --instance-ids <ami-00000000000000000>
+aws iam add-user-to-group --user-name <username> --group-name <group-name>
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess --group-name <group-name>
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonRoute53FullAccess --group-name <group-name>
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess --group-name <group-name>
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonVPCFullAccess --group-name <group-name>
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/IAMFullAccess --group-name <group-name>
+aws iam create-access-key --user-name <username>
+aws iam create-group --group-name <group-name>
+aws iam create-user --user-name <username>
+aws lambda create-function --region us-east-1 --function-name <lambda-function-name> --zip-file fileb://./path/to/lambda_package.zip --role arn:aws:iam::<aws-account-id>:role/service-role/lambda --handler module.lambda_handler --runtime python3.6 --timeout 15 --memory-size 128
+aws logs create-log-group --log-group-name <log-group-name> --region us-east-1
+aws s3 cp s3://<bucket-name>/file.txt.bz2 file.txt.bz2
+aws s3 ls s3://<bucket-name>/<path>/ --summarize --human-readable --recursive > /path/to/output-file.txt
+aws s3 mv --recursive s3://<bucket-name>/folder s3://<another-bucket-name>/folder
+aws s3 sync /path/local/ s3://<bucket-name> --acl public-read --delete
+aws s3 sync s3://<bucket-name>/<bucket-folder>/ s3://<another-bucket-name>/<another-bucket-folder>/
+aws s3api put-bucket-encryption --bucket <bucket-name> --server-side-encryption-configuration '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}}]}'
+aws sqs send-message --queue-url https://sqs.host.com/<id>/<queue> --message-body '{"msg": true}'
+aws ssm put-parameter --name /prod/my-app/DB_PASSWORD --value "SecretPassword" --type SecureString --key-id "alias/aws/ssm" --region us-east-1 --overwrite
+aws ssm put-parameter --name /prod/my-app/DB_USERNAME --value "Username" --type SecureString --key-id "alias/aws/ssm" --region us-east-1
+bower install
+bower install <package>
+bower install <package> --save
+bower install <package> --save-dev
+bower search <package>
+brew cask install <application>
+brew cask uninstall <application>
+brew cleanup -s
+brew clear
+brew deps --tree --installed
+brew doctor
+brew info <package>
+brew install <package>
+brew link <package>
+brew list
+brew prune
+brew search <package>
+brew services list
+brew services start <service>
+brew services status <service>
+brew services stop <service>
+brew switch <package> <version>
+brew uninstall <package>
+brew update
+brew update; brew upgrade; brew cask upgrade; brew cleanup;
+brew upgrade <package>
+bzip2 -z file-to-be-bzipped.txt
+cat ~/.ssh/id_rsa.pub | ssh <user>@<host> "cat >> ~/.ssh/authorized_keys"
+celery worker -A <application-name> --autoscale=16,4 --loglevel=debug
+chalice delete --stage production
+chalice deploy
+chalice local
+chmod +x <filename.ext>
+chmod 600 <path/to/key.pem>
+CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite3)/include" pyenv install -v <python-version>
+csrutil disable
+csrutil enable
+curl 'https://api.github.com/repos/stedolan/jq/commits?per_page=5' | jq '.[] | {message: .commit.message, name: .commit.committer.name}'
+curl --user <http_auth_user>:<http_auth_password> "https://www.url.com/v1/endpoint/"
+curl --verbose -X GET "https://www.url.com/v1/endpoint/"
+curl -d content='<b>!</b>' "https://www.url.com/v1/endpoint/"
+curl -H "Content-Type: application/json" -X POST -d '{"content": "!"}' "https://www.url.com/v1/endpoint/"
+curl -X GET --header 'Accept: application/json' "https://www.url.com/v1/endpoint/"
+curl -X GET --header 'Accept: text/csv' "https://www.url.com/v1/endpoint/"
+curl ifconfig.me/all.json
+dask worker --ip 192.168.0.1
+dig <url> ns
+diskutil list
+docker
+docker --version
+docker build -f Dockerfile --no-cache -t <image-tag> .
+docker build -f Dockerfile -t <image-tag> .
+docker exec -it <image-id> /bin/bash
+docker exec -it <image> /bin/bash
+docker image history <image-id>
+docker image history <image>
+docker images
+docker info
+docker logs <image>
+docker logs <image> -f --tail=999
+docker ps
+docker pull <id>.dkr.ecr.us-east-1.amazonaws.com/repo/image:latest
+docker pull <image>
+docker rm $(docker ps -aq)
+docker rmi "<image>"
+docker rmi "<image>" -f
+docker rmi $(docker images -f "dangling=true" -q)
+docker run -it --env-file <.envfile> <image>
+docker run -it --env-file <.envfile> <image> /bin/sh
+docker run -it <image>
+docker run -it <image> /bin/bash
+docker system prune
+docker system prune -a --force --volumes
+docker-compose
+docker-compose -f docker-compose.yml build --no-cache .
+docker-compose -f docker-compose.yml build .
+docker-compose -f docker-compose.yml down
+docker-compose -f docker-compose.yml logs
+docker-compose -f docker-compose.yml logs <service>
+docker-compose -f docker-compose.yml ps
+docker-compose -f docker-compose.yml rm
+docker-compose -f docker-compose.yml rm --all
+docker-compose -f docker-compose.yml up
+docker-compose -f docker-compose.yml up -d
+docker-machine
+docker-machine create --driver amazonec2 --amazonec2-access-key AAAAAAAAAAAAAAAAAAAA --amazonec2-secret-key AAAAAAAAAAAAAAAAAAAA <machine-name>
+docker-machine create --driver digitalocean --digitalocean-access-token A0A0A0A0A0A0A0A0A0A0 <machine-name>
+du -ha --summary
+echo $PATH | sed $'s/:/\\\n/g'
+env CRYPTOGRAPHY_SUPPRESS_LINK_FLAGS=1 LDFLAGS="-L$(brew --prefix openssl)/lib" CFLAGS="-I$(brew --prefix openssl)/include" pip install cryptography
+eval "$(ssh-agent -s)"
+fab -l
+ffmpeg -i "/path/to/file.mp4" -dump
+find . -maxdepth 1 -name "*.<ext>" -print
+find . -name "*.<ext>" -print
+find . -type f -name "*.<ext>"
+find . -type f -name "<filename.ext>"
+git add <file>
+git branch -a
+git branch -d <branch>
+git branch -D <branch>
+git checkout
+git checkout -- <filename.ext>
+git checkout --orphan <branch>
+git checkout --track origin/<branch>
+git checkout -b <branch>
+git checkout -b <branch> --track upstream/<branch>
+git checkout -b bugfix/<ISSUE-000>
+git checkout -b feature/<ISSUE-000>
+git checkout -b origin/<branch>
+git commit --amend
+git commit --amend --no-verify
+git commit -a -m "<msg>"
+git commit -m "[ISSUE-1] <msg>"
+git commit -m "[ISSUE-1] <msg>" --no-verify
+git diff d303b29..dd0b02b
+git fetch --all
+git log --oneline -n 5
+git pull
+git pull --all
+git pull --rebase
+git pull --rebase <branch>
+git pull --tags
+git pull origin <branch>
+git pull origin feature/<ISSUE-000>
+git push 
+git push --set-upstream origin <branch>
+git push -f origin master
+git push origin <branch>
+git push origin <branch>:<remote-branch>
+git rebase --continue
+git remote -v
+git reset --hard
+git reset --soft
+git rm --cached <file>
+git rm -f *.<ext>
+git rm -rf <folder>
+git rm <file>
+git stash apply
+git stash clear
+git stash list
+git stash show -p
+git stash show -p stash@{5}
+git status
+git status --porcelain
+git submodule add git@github.com:user/repository.git path
+git submodule init
+git submodule update
+git tag -l
+grep -c "<string>" <path>
+grep -f "<string>" <path>
+grep -o "<string>" <path>
+grep -o '<string>' <filename.ext> | wc -l
+grep -R -m 2 "<string>" <path>
+grep -rH -m 2 "<string>" <path>
+grep -ril "<string>" --include \*.<ext> <path>
+grep -ril "<string>" <path>
+grunt serve
+gulp
+gulp clean
+gulp clean && gulp
+gulp clean && gulp && jekyll serve
+helm delete <template> --purge;
+helm list --all
+helm template <template> | kubectl apply -f -
+helm template <template> | kubectl delete -f -
+heroku config:get DATABASE_URL -a <app>
+heroku login
+http --auth <http_auth_user>:<http_auth_password> GET 'Accept: text/csv' 'https://www.url.com/v1/endpoint/'
+http --auth <http_auth_user>:<http_auth_password> GET 'https://www.url.com/v1/endpoint/'
+http --auth <http_auth_user>:<http_auth_password> GET --csv 'https://www.url.com/v1/endpoint/'
+http GET "https://www.url.com/v1/endpoint/"
+http HEAD "https://www.url.com/v1/endpoint/"
+http OPTIONS "https://www.url.com/v1/endpoint/"
+http POST https://www.url.com/v1/endpoint/ -d '{"callback": "https://3.com/v1/endpoint/", "command": "cmd-xxx"}}'
+http POST https://www.url.com/v1/endpoint/ <<< '{"callback": "https://3.com/v1/endpoint/", "command": "cmd-xxx"}}'
+ifconfig
+jekyll serve
+jobs
+jupyter contrib nbextension install --sys-prefix
+jupyter kernelspec list
+jupyter nbextension enable widgetsnbextension --debug --sys-prefix --py
+jupyter notebook
+jupyter notebook --generate-config
+jupyter notebook --NotebookApp.iopub_data_rate_limit=10000000000
+jupyter notebook list
+jupyter-nbconvert jurimetria-pipeline.ipynb --to python
+kops create cluster --node-count=3 --node-size=t3.medium --master-size=t3.medium --zones=us-east-1a --name=${KOPS_CLUSTER_NAME}
+kops delete cluster --name=myfirstcluster.k8s.local --state=s3://discovery-kube --yes
+kops describe
+kops edit cluster --name myfirstcluster.k8s.local
+kops get cluster
+kops update cluster --name myfirstcluster.k8s.local --yes
+kops validate cluster
+kops version
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl completion zsh
+kubectl delete
+kubectl delete deployments <name>
+kubectl get deployments
+kubectl get nodes
+kubectl get nodes --show-labels
+kubectl get pods --all-namespaces
+kubectl get services
+kubectl proxy
+kubectl run <name> --image <image>
+lambda
+lambda build
+lambda build --local-package .
+lambda cleanup
+lambda deploy
+lambda invoke -v
+lambda zip
+locale -a
+locust -f /path/to/locustfile.py
+ls | grep <word>
+make clean
+make devserver
+md5 <filename.ext> > <filename.ext.md5>
+md5deep -b path/* > hashes.txt
+md5deep -bm hashes.txt another-path/*
+md5deep -bx hashes.txt another-path/*
+md5deep <filename.ext>
+minikube delete
+minikube start
+minikube stop
+mongo
+mongodump --verbose --db <database-name> --gzip --archive=filename_`date "+%Y-%m-%d"`.gz --collection=<collection-name>
+mongodump --verbose --host <host.com:3000,host2:3000> --username <user> --password <password> --authenticationDatabase admin --db <database-name> --gzip --archive=filename_`date "+%Y-%m-%d"`.gz --collection=<collection-name>
+mongodump --verbose --host localhost:27017 --db <database-name> --gzip --archive=filename_`date "+%Y-%m-%d"`.gz --collection=<collection-name>
+mongoexport --verbose --host host.amazonaws.com:3000 --username <user> --password <password> --authenticationDatabase admin --db <database-name> --collection <collection-name> --type=csv --fields <field1,field2> --out <output-file.csv> --limit 10
+mongoexport --verbose --host localhost:27017 --db <database-name> --collection <collection-name> --type=csv --fields <field1,field2> --out <output-file.csv> --limit 10
+mongoimport --verbose --host localhost:27017 --db <database-name> --collection <collection-name> --file <import-file.json>
+mongoimport --verbose --host localhost:27017 --db <database-name> --collection <collection-name> --jsonArray --file <import-file.json>
+mongorestore --verbose --host host.amazonaws.com:3000 --username <user> --password <password> --authenticationDatabase admin --db <database-name> --collection <collection-name> --gzip --archive=/path/to/collection.gz
+mongorestore --verbose --host localhost:27017 --db <database-name> --collection <collection-name> --archive=/path/to/database.bson
+mongorestore --verbose --host localhost:27017 --db <database-name> --collection <collection-name> --gzip --archive=/path/to/collection.gz
+npm -v
+npm init
+npm install
+npm install -g <package>
+npm install <package>
+npm list -g
+npm run start
+npm run watch
+npm update
+nrmod <filename.ext>
+nslookup <url>
+openssl version -a
+pelican -D
+pelican-quickstart
+pg_dump -Fc -v -h <host>.rds.amazonaws.com -U <user> -W <password> -d <database-name> -p 5432 -f /path/to/file.dump
+pg_dump -Fc -v -h <host>.rds.amazonaws.com -U <user> -W <password> -d <database-name> -p 5432 -t <table> -f /path/to/file.dump
+pg_restore --host "localhost" --port "5432" --dbname "<database-name>" --no-owner --verbose "/path/to/file.backup"
+pg_top
+PGPASSWORD="<password>" pg_restore -v -h <host>.rds.amazonaws.com -U <user> -d <database-name> -p 5432 -f /path/to/file.dump
+pgweb
+pgweb --url "postgres://postgres@localhost:5432/postgres"
+pgweb --url postgres://<user>:<password>@<host>:<port>/<database-name>
+ping <ip>
+pip
+pip --version
+pip freeze
+pip freeze > requirements.txt
+pip freeze | xargs pip uninstall -y
+pip install --editable .
+pip install --install-option="--with-openssl" --install-option="--openssl-dir=/usr/local/opt/openssl" <package>
+pip install -e <path>
+pip install -e git+https://<token>:x-oauth-basic@github.com/<user>/<repository>.git@master#egg=<repository>
+pip install -e git+https://github.com/<user>/<repository>.git@master
+pip install -r requirements.txt
+pip install git+https://<token>:x-oauth-basic@github.com/<user>/<repository>.git@master
+pip search <package>
+pipenv 
+pipenv --graph
+pipenv --rm
+pipenv --venv
+pipenv --venv | xargs rm -rf
+pipenv check
+pipenv install
+pipenv install --dev
+pipenv install --python <python-path>
+pipenv install --python <python-path> --dev
+pipenv install -e git+https://<token>:x-oauth-basic@github.com/<user>/<repository>.git@master#egg=<repository>
+pipenv lock
+pipenv lock --clear
+pipenv lock --requirements > requirements.txt
+pipenv shell
+pipenv uninstall <package>
+pipsi
+pipsi freeze
+pipsi install <package>
+pipsi list
+pipsi uninstall <package>
+pre-commit
+pre-commit install
+printenv
+printenv | grep PATTERN_ | lc
+ps aux | grep "celery" | grep -v grep | awk "{ print \$2 }" | xargs kill -9
+ps aux | grep "python" | grep -v grep | awk "{ print \$2 }" | xargs kill -9
+ps aux | grep "rabbitmq-server" | grep -v grep | awk "{ print \$2 }" | xargs kill -9
+ps aux | grep <program/process>
+ps aux | grep <program/process> | grep -v grep
+py.test
+py.test --collect-only
+py.test --fixtures
+py.test -s
+pyenv activate <pyenv-virtualenv>
+pyenv deactivate
+pyenv global <python-versions>
+pyenv install -l
+pyenv install -l | grep 2.7
+pyenv install -l | grep 3.6
+pyenv install <python-versions>
+pyenv local <python-versions>
+pyenv uninstall <python-versions>
+pyenv version
+pyenv versions
+pyenv virtualenv <python-version> <virtualenv-name>
+pyspark
+python -m ipykernel install --user --name=`basename $VIRTUAL_ENV` --display-name "<notebook-name>"
+python manage.py createsuperuser --settings settings.production
+python manage.py dumpdata app.Model > fixtures_model.json --indent 4 --format=json
+python manage.py dumpdata django.contrib.auth.models.User > fixtures_user.json --indent 4 --format=json
+python manage.py loaddata path/to/fixtures.json
+python manage.py makemigrations --settings settings.production
+python manage.py migrate --settings settings.production
+python manage.py runserver --settings settings.production
+PYTHONPATH='.' luigi --module top_10_artists Top10Artists --date-interval 2012-06
+PYTHONPATH='.' luigi --module top_10_artists Top10Artists --local-scheduler --date-interval 2012-06
+rm -rf $(brew --cache)
+rm -rf <folder>
+rm <filename.ext>
+scp -i ~/.ssh/key.pem -r <user>@<host>:/path/remote/images /path/local/images
+scp <user>@<host>:/path/remote/file.backup .
+scrapy crawl <spider> -a <argument>=<value>
+scrapy list
+spark-shell
+spark-shell --version
+ssh -i <path/to/key.pem> <user>@<host>
+ssh -i <path/to/key.pem> ec2-user@<aws.host.compute-1.amazonaws.com>
+ssh -T -p 443 git@ssh.github.com
+ssh -T git@github.com
+ssh agent
+ssh-add -K <path/to/key.pem>
+ssh-add <path/to/key.pem>
+ssh-keygen -t rsa -b 4096 -C "afmalvim@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "arthur@intelivix.com"
+SSH_PASSWORD=retropie ssh pi@retropie.local
+subl .
+sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/PENDRIVEMACOS --applicationpath /Applications/Install\ macOS\ High\ Sierra.app --nointeraction
+sudo mount -t ntfs -o rw,auto,nobrowse /dev/disk2s1 /Volumes/WesternDigital
+sudo umount /Volumes/WesternDigital
+sudo xattr -d -r -s com.apple.quarantine '/path/to/some/file.txt'
+sysctl -n hw.ncpu
+TEST_PATH=/path/to/tests/specific-test.py make test
+webpack
+wget http://www.somedomain.com/templates// -P ./to/path/output
+which -a <binary>
+which <binary>
+whois www.host.com
+xcode-select --install
+xcodebuild -license
+yarn --version
+yarn add <package>
+yarn add <package> --dev
+yarn init
+youtube-dl https://www.youtube.com/watch\?v\=00000000000
+zeppelin-daemon.sh start
+zeppelin-daemon.sh status
+zeppelin-daemon.sh stop

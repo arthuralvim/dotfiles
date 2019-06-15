@@ -1,0 +1,11 @@
+// SublimeLinter Settings - User
+{
+    "paths": {
+    "linux": [],
+    "osx": [
+        "~/.local/bin/",
+        "~/.pyenv/shims/"
+    ],
+    "windows": []
+}
+}

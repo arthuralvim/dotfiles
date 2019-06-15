@@ -1,0 +1,45 @@
+<snippet>
+    <content><![CDATA[
+from django.views.generic.edit import DeleteView
+from django.shotcuts import get_object_or_404
+from ${2:app.models} import ${3:Model}
+
+
+class ${1:Name}View(DeleteView):
+
+    context_object_name = None
+    model = ${3:Model}
+    pk_url_kwarg = '${4:pk}'
+    queryset = None
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
+    template_name = '${5:template.html}'
+
+    def dispatch(self, *args, **kwargs):
+        return super(${1:Name}View, self).dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(${1:Name}View, self).get_context_data(**kwargs)
+        return context
+
+    def get_context_object_name(self, obj):
+        return super(${1:Name}View, self).get_context_object_name(obj)
+
+    def get_object(self):
+        return get_object_or_404(${3:Model}, pk=self.kwargs.get('${4:pk}'))
+
+    def get_queryset(self):
+        return super(${1:Name}View, self).get_queryset()
+
+    def get_slug_field(self):
+        return super(${1:Name}View, self).get_slug_field()
+
+    def get_template_name(self):
+        return super(${1:Name}View, self).get_template_name()
+
+
+${6:name}view = ${1:Name}View.as_view()
+]]></content>
+    <tabTrigger>delview</tabTrigger>
+    <scope>source.python</scope>
+</snippet>
