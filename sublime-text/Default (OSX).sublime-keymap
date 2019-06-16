@@ -14,5 +14,7 @@
     { "keys": ["ctrl+shift+h"], "command": "run_build", "args":{"build_system":"Packages/User/CleanTexFiles.sublime-build"}},
     { "keys": ["f8"], "command": "permute_lines", "args": {"operation": "unique"} },
     { "keys": ["ctrl+alt+shift+l"], "command": "delete_blank_lines", "args": { "surplus": true } },
-    { "keys": ["ctrl+alt+l"], "command": "delete_blank_lines", "args": { "surplus": false } }
+    { "keys": ["ctrl+alt+l"], "command": "delete_blank_lines", "args": { "surplus": false } },
+    { "keys": ["alt+shift+c"], "command": "git_commit_amend",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "text.git-status"}]}
 ]
