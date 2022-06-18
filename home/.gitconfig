@@ -2,7 +2,7 @@
     name = Arthur Alvim
     email = afmalvim@gmail.com
 [core]
-    editor = subl -w
+    editor = code --wait
     autocrlf = input
     excludesfile = $HOME/.global_gitignore
     pager = cat
