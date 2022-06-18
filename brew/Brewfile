@@ -1,5 +1,6 @@
 apache-spark
 apache-zeppelin
+aws-es-proxy
 blueutil
 chromedriver
 coreutils
