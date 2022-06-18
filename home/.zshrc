@@ -17,3 +17,5 @@ unsetopt extended_history
 unsetopt share_history
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+
+# zprof  # remove for profiling
