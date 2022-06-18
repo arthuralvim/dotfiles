@@ -84,13 +84,13 @@ fi
 #   \/_/     \/_/\/_/     \/_/   \/_/\/_/   \/_____/
 
 
-# Directories to be prepended to PATH
+# directories to be prepended to PATH
 dirs_to_prepend=(
     "$HOME/.local/bin"
     "$PYENV_ROOT/shims"
 )
 
-# Directories to be appended to PATH
+# directories to be appended to PATH
 dirs_to_append=(
     "/bin"
     "/sbin"
@@ -112,7 +112,7 @@ dirs_to_append=(
     "/Applications/Docker.app/Contents/Resources/bin"
 )
 
-# Prepend directories to PATH
+# prepend directories to PATH
 for index in "${(@k)dirs_to_prepend}"; do
     if [ -d "$index" ]; then
         # If these directories exist, then prepend them to existing PATH
@@ -148,6 +148,9 @@ alias projects="cd $PROJECT_HOME"
 alias work="cd $PROJECT_HOME/pluralsight"
 alias dotfiles="hm cd dotfiles"
 alias hm="homeshick"
+alias please='sudo'
+alias porfavor='sudo'
+alias xx='exit'
 
 # list
 alias ls="ls -Glha"
@@ -163,15 +166,15 @@ alias .....="cd ../../../.."
 
 # python
 alias asjson='python -m json.tool'
-alias pyserver='python -m SimpleHTTPServer'
+alias py2server='python -m SimpleHTTPServer'
+alias py3server='python -m http.server'
+alias pyserver='python -m http.server'
 
 # pyenv
 alias pyenvs="pyenv install -l"
 alias pyvienvs="pyenv virtualenvs"
 
-alias xx='exit'
-
-#httpie
+# httpie
 alias 'GET=http -v GET'
 alias 'POST=http -v POST'
 alias 'PUT=http -v PUT'
