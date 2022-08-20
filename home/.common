@@ -12,6 +12,7 @@
 # general
 export EMAIL=afmalvim@gmail.com
 export EDITOR="code -w"
+export VISUAL="$EDITOR"
 
 # encoding
 export LANG="en_US.UTF-8"
@@ -225,6 +226,15 @@ function git_fetch_all_branches(){
     git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
     git fetch --all
     git pull --all
+}
+
+function weather_compare(){
+    diff -Naur <(curl -s http://wttr.in/$1 ) <(curl -s http://wttr.in/$2 )
+}
+
+function weather(){
+    local city="${1:-Recife}"
+    curl -s "http://wttr.in/${city}"
 }
 
 arthur() {
