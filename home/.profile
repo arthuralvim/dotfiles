@@ -144,7 +144,7 @@ export PATH
 
 # folders
 alias home="cd $HOME"
-alias projects="cd $PROJECT_HOME"
+alias pro="cd $PROJECT_HOME"
 alias work="cd $PROJECT_HOME/pluralsight"
 alias dotfiles="hm cd dotfiles"
 alias hm="homeshick"
@@ -187,11 +187,12 @@ alias sgi='sudo gem install --no-ri --no-rdoc'
 
 # git
 alias gc='git commit'
+alias gca='git commit --amend'
 alias gcv='git commit --no-verify'
 
 # ohmyzsh
-alias ohmyzsh="subl ~/.oh-my-zsh"
-alias zshcfg="subl ~/.zshrc"
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+alias zshcfg="$EDITOR ~/.zshrc"
 
 # networking
 alias local-ip-all="ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'"
@@ -200,9 +201,6 @@ alias ipext='dig +short myip.opendns.com @resolver1.opendns.com'
 alias mac-adresses='networksetup -listallhardwareports'
 
 alias ssh-pub-key='cat $HOME/.ssh/id_rsa.pub'
-
-# wheater
-alias weather-rec='curl "http://wttr.in/Recife"'
 
 # env
 alias show-env-vars='printenv'
