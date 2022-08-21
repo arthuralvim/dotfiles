@@ -27,6 +27,9 @@ export HOMEBREW_PREFIX=$(brew --prefix)/opt
 [ -d $HOME/Work ] || mkdir -p $HOME/Work
 export PROJECT_HOME=$HOME/Work
 
+# gpg
+export GPG_TTY=$(tty)
+
 # android
 export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
 export ANDROID_HOME=/opt/homebrew-cask/Caskroom/android-sdk/3859397,26.0.2

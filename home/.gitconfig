@@ -1,6 +1,7 @@
 [user]
     name = Arthur Alvim
     email = afmalvim@gmail.com
+    signingkey = 083FDFA462F83160
 [core]
     editor = code --wait
     autocrlf = input
@@ -15,6 +16,12 @@
 [merge]
 	ff = only
     tool = meld
+[commit]
+    gpgsign = true
+[tag]
+    gpgSign = true
+[log]
+    showSignature = true
 [alias]
     c = commit
     call = commit -A :/
