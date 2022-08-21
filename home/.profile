@@ -21,7 +21,7 @@ export HOMESHICK_DIR=/usr/local/opt/homeshick
 source "/usr/local/opt/homeshick/homeshick.sh"
 
 # general
-export DOTFILES_DIR="$HOME/.dotfiles"
+export DOTFILES_DIR="$HOME/.homesick/repos/dotfiles"
 export HOMEBREW_PREFIX=$(brew --prefix)/opt
 
 [ -d $HOME/Work ] || mkdir -p $HOME/Work
@@ -171,8 +171,9 @@ alias py3server='python -m http.server'
 alias pyserver='python -m http.server'
 
 # pyenv
-alias pyenvs="pyenv install -l"
-alias pyvienvs="pyenv virtualenvs"
+alias py_versions_available="pyenv install -l"
+alias py_versions_installed="pyenv versions"
+alias py_virtualenvs="pyenv virtualenvs"
 
 # httpie
 alias 'GET=http -v GET'
@@ -203,7 +204,7 @@ alias mac-adresses='networksetup -listallhardwareports'
 alias ssh-pub-key='cat $HOME/.ssh/id_rsa.pub'
 
 # env
-alias show-env-vars='printenv'
+alias show-vars='printenv'
 
 # utils
 alias o="open"

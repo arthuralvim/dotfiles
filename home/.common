@@ -191,10 +191,6 @@ whatsmyip() {
     echo "My public IP address is: $ip"
 }
 
-weather() {
-    curl -s wttr.in/`curl -s ifconfig.co/city`
-}
-
 gpip() {
     PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
@@ -237,6 +233,13 @@ function weather(){
     curl -s "http://wttr.in/${city}"
 }
 
+function install_theme(){
+    export ZSH_CUSTOM_THEMES=$ZSH/custom/themes
+    [[ ! -f $ZSH_CUSTOM_THEMES/alvim.zsh-theme ]] && cp $DOTFILES_DIR/theme/alvim.zsh-theme $ZSH_CUSTOM_THEMES/alvim.zsh-theme
+    sed -i '' -e 's|^ZSH_THEME=.*$|ZSH_THEME="alvim"|g' $DOTFILES_DIR/home/.zshrc && source ~/.zshrc && echo "Edited line in ~/zshrc :" && cat ~/.zshrc | grep -m 1 ZSH_THEME
+    echo "Theme installed. Reload your SHELL."
+}
+
 arthur() {
     msg ' ______     ______     ______   __  __     __  __     ______    '
     msg '/\  __ \   /\  == \   /\__  _\ /\ \_\ \   /\ \/\ \   /\  == \   '
@@ -260,8 +263,6 @@ tutu() {
     msg '    \/_/   \/_____/     \/_/   \/_____/ '
     msg ''
 }
-
-
 
 quod() {
     msg ''
