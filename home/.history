@@ -1,4 +1,17 @@
+
 $(aws ecr get-login --no-include-email --region us-east-1)
+7z x <package.7z>
+7za a <package.7z> <folder-or-file>
+CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite3)/include" pyenv install -v <python-version>
+PGPASSWORD="<password>" pg_restore -v -h <host>.rds.amazonaws.com -U <user> -d <database-name> -p 5432 -f /path/to/file.dump
+PGPASSWORD=<password> pg_dump -v -h <host> -U <user> -d <database> -p 5432 -t '<schema>.<table>' --schema-only > sql/output.sql
+PGPASSWORD=<password> pg_restore -v -h <host>.rds.amazonaws.com -U <user> -d <database-name> -p 5432 /path/to/file.dump
+PGPASSWORD=<password> psql --host="rds-example.us-east-1.rds.amazonaws.com" --username=user --dbname=database_name --port=5432 -c "COPY (SELECT id, nome FROM public.table_name WHERE ID BETWEEN 2000000 and 2500000) TO STDOUT WITH (FORMAT CSV, HEADER, QUOTE '\"', DELIMITER ',', ESCAPE '\', FORCE_QUOTE(nome));" > output.csv
+PYTHONPATH='.' luigi --module top_10_artists Top10Artists --date-interval 2012-06
+PYTHONPATH='.' luigi --module top_10_artists Top10Artists --local-scheduler --date-interval 2012-06
+SSH_PASSWORD=retropie ssh pi@retropie.local
+TEST_PATH=/path/to/tests/specific-test.py make test
+TZ=UTC jest --watch
 ab -n 10000 -c 50  -k google.com.br/
 alembic current
 alembic history
@@ -19,7 +32,12 @@ ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version
 ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --tags <tag1,tag2,tag3>
 ansible-playbook -i <inventory> <playbook>.yml -l <limit>  --extra-vars "version=master environ=prod" --verbose 4
 ansible-playbook -i <inventory> <playbook>.yml -l <limit>  -e "version=master environ=prod"
+ansible-vault decrypt <file>
+ansible-vault edit <file>
+ansible-vault encrypt <file>
+ansible-vault view <file>
 aws configure
+aws configure list
 aws dynamodb list-tables
 aws ec2 authorize-security-group-ingress --group-name <group-name> --protocol tcp --port <port_number> --cidr 0.0.0.0/0
 aws ec2 create-key-pair --key-name <key-name> --query 'KeyMaterial' --output text > ~/.ssh/<key-name>.pem
@@ -53,6 +71,7 @@ aws s3api put-bucket-encryption --bucket <bucket-name> --server-side-encryption-
 aws sqs send-message --queue-url https://sqs.host.com/<id>/<queue> --message-body '{"msg": true}'
 aws ssm put-parameter --name /prod/my-app/DB_PASSWORD --value "SecretPassword" --type SecureString --key-id "alias/aws/ssm" --region us-east-1 --overwrite
 aws ssm put-parameter --name /prod/my-app/DB_USERNAME --value "Username" --type SecureString --key-id "alias/aws/ssm" --region us-east-1
+aws-es-proxy -endpoint <https://search.us-east-1.es.amazonaws.com>
 bower install
 bower install <package>
 bower install <package> --save
@@ -79,24 +98,31 @@ brew uninstall <package>
 brew update
 brew update; brew upgrade; brew cask upgrade; brew cleanup;
 brew upgrade <package>
+build-storybook
 bzip2 -z file-to-be-bzipped.txt
+cat myfile | sed -n "/myString/p" | wc -l
 cat ~/.ssh/id_rsa.pub | ssh <user>@<host> "cat >> ~/.ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub | ssh root@your.ip.address "cat >> ~/.ssh/authorized_keys"
 celery worker -A <application-name> --autoscale=16,4 --loglevel=debug
 chalice delete --stage production
 chalice deploy
 chalice local
+chalice new-project <project-name>
 chmod +x <filename.ext>
+chmod 600 .ssh/id_rsa
 chmod 600 <path/to/key.pem>
-CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite3)/include" pyenv install -v <python-version>
+convert +append a.png b.png c.png
+convert file.pdf -compress Zip compressed-file.pdf
 csrutil disable
 csrutil enable
 curl 'https://api.github.com/repos/stedolan/jq/commits?per_page=5' | jq '.[] | {message: .commit.message, name: .commit.committer.name}'
 curl --user <http_auth_user>:<http_auth_password> "https://www.url.com/v1/endpoint/"
 curl --verbose -X GET "https://www.url.com/v1/endpoint/"
-curl -d content='<b>!</b>' "https://www.url.com/v1/endpoint/"
 curl -H "Content-Type: application/json" -X POST -d '{"content": "!"}' "https://www.url.com/v1/endpoint/"
 curl -X GET --header 'Accept: application/json' "https://www.url.com/v1/endpoint/"
 curl -X GET --header 'Accept: text/csv' "https://www.url.com/v1/endpoint/"
+curl -d content='<b>!</b>' "https://www.url.com/v1/endpoint/"
+curl -v http://admin:monit@localhost:2812
 curl ifconfig.me/all.json
 dask worker --ip 192.168.0.1
 dig <url> ns
@@ -137,6 +163,7 @@ docker-compose -f docker-compose.yml rm
 docker-compose -f docker-compose.yml rm --all
 docker-compose -f docker-compose.yml up
 docker-compose -f docker-compose.yml up -d
+docker-compose run -e SOME_VAR=True --rm <service_name> pytest . --no-migrations -s -k TestQuery
 docker-machine
 docker-machine create --driver amazonec2 --amazonec2-access-key AAAAAAAAAAAAAAAAAAAA --amazonec2-secret-key AAAAAAAAAAAAAAAAAAAA <machine-name>
 docker-machine create --driver digitalocean --digitalocean-access-token A0A0A0A0A0A0A0A0A0A0 <machine-name>
@@ -146,14 +173,25 @@ env CRYPTOGRAPHY_SUPPRESS_LINK_FLAGS=1 LDFLAGS="-L$(brew --prefix openssl)/lib" 
 eval "$(ssh-agent -s)"
 fab -l
 ffmpeg -i "/path/to/file.mp4" -dump
+ffmpeg -i <video.mp4> -c copy -map_metadata 0 -map_metadata:s:v 0:s:v -map_metadata:s:a 0:s:a -f ffmetadata output.txt
+ffmpeg -i <video.mp4> -f ffmetadata output.txt
+ffprobe -show_streams -show_format <video.mp4> > output.txt
 find . -maxdepth 1 -name "*.<ext>" -print
 find . -name "*.<ext>" -print
+find . -name "*.log" -exec sed -i '' 's/<string-pattern>/<string-substitute>/g' {} \;
+find . -type d -name bower_components -prune -exec rm -rf {} ;
+find . -type d -name node_modules -prune -exec rm -rf {} ;
 find . -type f -name "*.<ext>"
 find . -type f -name "<filename.ext>"
+for i in *; do mv "$i" "$i.csv"; done
+for i in *; do tar -cjvf "$i.bz2" "$i"; done
+for i in *; do tar -czvf "$i.tar.gz" "$i"; done
+gifsicle -O3 -k 8 --lossy=80 -o tty-small.gif tty.gif
 git add <file>
+git branch -D <branch>
 git branch -a
 git branch -d <branch>
-git branch -D <branch>
+git branch -l
 git checkout
 git checkout -- <filename.ext>
 git checkout --orphan <branch>
@@ -163,6 +201,7 @@ git checkout -b <branch> --track upstream/<branch>
 git checkout -b bugfix/<ISSUE-000>
 git checkout -b feature/<ISSUE-000>
 git checkout -b origin/<branch>
+git clean -fd
 git commit --amend
 git commit --amend --no-verify
 git commit -a -m "<msg>"
@@ -170,7 +209,9 @@ git commit -m "[ISSUE-1] <msg>"
 git commit -m "[ISSUE-1] <msg>" --no-verify
 git diff d303b29..dd0b02b
 git fetch --all
+git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s"
 git log --oneline -n 5
+git log --show-signature
 git pull
 git pull --all
 git pull --rebase
@@ -178,13 +219,14 @@ git pull --rebase <branch>
 git pull --tags
 git pull origin <branch>
 git pull origin feature/<ISSUE-000>
-git push 
+git push
 git push --set-upstream origin <branch>
 git push -f origin master
 git push origin <branch>
 git push origin <branch>:<remote-branch>
 git rebase --continue
 git remote -v
+git remote add <reference> git@github.com:<user>/<repo>.git
 git reset --hard
 git reset --soft
 git rm --cached <file>
@@ -202,11 +244,30 @@ git submodule add git@github.com:user/repository.git path
 git submodule init
 git submodule update
 git tag -l
+gpg --armor --export <key-id-or-email>
+gpg --armor --output <key.pub> --export <key-id-or-email>
+gpg --delete-keys <key-id-or-email>
+gpg --delete-keys <key-id-or-email> --delete-secret-keys
+gpg --edit-key <key-id-or-email>
+gpg --export-secret-keys --armor <email> --output <keys.gpg>
+gpg --full-generate-key
+gpg --gen-revoke <email> --output <revoke.key.asc>
+gpg --import <key.asc>
+gpg --list-keys
+gpg --list-keys --keyid-format LONG <key-id-or-email>
+gpg --output <file-non-encrypted.app> -d <file-encrypted.app>
+gpg --passwd <email>
+gpg --recv-keys <key-id-or-email>
+gpg --search-keys <key-id-or-email>
+gpg --send-keys <key-id-or-email>
+gpg --verify <signature-file.asc> <file.app>
+gpg -u <key-id-or-email> -–detach-sign <file.app>
+gpg -–armor --sign –-encrypt -r <key-id-or-email> <file-non-encrypted.app> –output <file-encrypted.app>
+grep -R -m 2 "<string>" <path>
 grep -c "<string>" <path>
 grep -f "<string>" <path>
 grep -o "<string>" <path>
 grep -o '<string>' <filename.ext> | wc -l
-grep -R -m 2 "<string>" <path>
 grep -rH -m 2 "<string>" <path>
 grep -ril "<string>" --include \*.<ext> <path>
 grep -ril "<string>" <path>
@@ -221,6 +282,11 @@ helm template <template> | kubectl apply -f -
 helm template <template> | kubectl delete -f -
 heroku config:get DATABASE_URL -a <app>
 heroku login
+htpasswd -b .htpasswd <username> <password>
+htpasswd -bc .htpasswd <username> <password>
+http "https://<elasticsearch-endpoint>/<index>/_count"
+http "https://<elasticsearch-endpoint>/<index>/_search?pretty"
+http "https://<elasticsearch-endpoint>/_cat/indices?v"
 http --auth <http_auth_user>:<http_auth_password> GET 'Accept: text/csv' 'https://www.url.com/v1/endpoint/'
 http --auth <http_auth_user>:<http_auth_password> GET 'https://www.url.com/v1/endpoint/'
 http --auth <http_auth_user>:<http_auth_password> GET --csv 'https://www.url.com/v1/endpoint/'
@@ -230,14 +296,17 @@ http OPTIONS "https://www.url.com/v1/endpoint/"
 http POST https://www.url.com/v1/endpoint/ -d '{"callback": "https://3.com/v1/endpoint/", "command": "cmd-xxx"}}'
 http POST https://www.url.com/v1/endpoint/ <<< '{"callback": "https://3.com/v1/endpoint/", "command": "cmd-xxx"}}'
 ifconfig
+ioreg -p IOUSB -l -w 0 -x
+ioreg -p IOUSB -w0 -l
+ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*'
 jekyll serve
 jobs
 jupyter contrib nbextension install --sys-prefix
 jupyter kernelspec list
 jupyter nbextension enable widgetsnbextension --debug --sys-prefix --py
 jupyter notebook
-jupyter notebook --generate-config
 jupyter notebook --NotebookApp.iopub_data_rate_limit=10000000000
+jupyter notebook --generate-config
 jupyter notebook list
 jupyter-nbconvert jurimetria-pipeline.ipynb --to python
 kops create cluster --node-count=3 --node-size=t3.medium --master-size=t3.medium --zones=us-east-1a --name=${KOPS_CLUSTER_NAME}
@@ -268,14 +337,22 @@ lambda invoke -v
 lambda zip
 locale -a
 locust -f /path/to/locustfile.py
+logstash -f logstash.conf
+logstash-plugin install <plugin>
+logstash-plugin install logstash-output-amazon_es
 ls | grep <word>
 make clean
 make devserver
 md5 <filename.ext> > <filename.ext.md5>
+md5deep -b foo/* > hashes.txt
 md5deep -b path/* > hashes.txt
 md5deep -bm hashes.txt another-path/*
+md5deep -bm hashes.txt bar/*
 md5deep -bx hashes.txt another-path/*
+md5deep -bx hashes.txt bar/*
+md5deep -rle -W /path/to/result.md5 *
 md5deep <filename.ext>
+mediainfo --Output=JSON <video.mp4> > output.txt
 minikube delete
 minikube start
 minikube stop
@@ -290,6 +367,11 @@ mongoimport --verbose --host localhost:27017 --db <database-name> --collection <
 mongorestore --verbose --host host.amazonaws.com:3000 --username <user> --password <password> --authenticationDatabase admin --db <database-name> --collection <collection-name> --gzip --archive=/path/to/collection.gz
 mongorestore --verbose --host localhost:27017 --db <database-name> --collection <collection-name> --archive=/path/to/database.bson
 mongorestore --verbose --host localhost:27017 --db <database-name> --collection <collection-name> --gzip --archive=/path/to/collection.gz
+monit -t
+monit reload
+monit start all
+monit status
+nc -zv <endpoint> port
 npm -v
 npm init
 npm install
@@ -300,15 +382,18 @@ npm run start
 npm run watch
 npm update
 nrmod <filename.ext>
+nslookup <endpoint>
 nslookup <url>
 openssl version -a
+pbcopy
+pbpaste
+pdftohtml -c file.pdf output.html
 pelican -D
 pelican-quickstart
 pg_dump -Fc -v -h <host>.rds.amazonaws.com -U <user> -W <password> -d <database-name> -p 5432 -f /path/to/file.dump
 pg_dump -Fc -v -h <host>.rds.amazonaws.com -U <user> -W <password> -d <database-name> -p 5432 -t <table> -f /path/to/file.dump
 pg_restore --host "localhost" --port "5432" --dbname "<database-name>" --no-owner --verbose "/path/to/file.backup"
 pg_top
-PGPASSWORD="<password>" pg_restore -v -h <host>.rds.amazonaws.com -U <user> -d <database-name> -p 5432 -f /path/to/file.dump
 pgweb
 pgweb --url "postgres://postgres@localhost:5432/postgres"
 pgweb --url postgres://<user>:<password>@<host>:<port>/<database-name>
@@ -337,6 +422,7 @@ pipenv install --dev
 pipenv install --python <python-path>
 pipenv install --python <python-path> --dev
 pipenv install -e git+https://<token>:x-oauth-basic@github.com/<user>/<repository>.git@master#egg=<repository>
+pipenv install -r requirements.txt
 pipenv lock
 pipenv lock --clear
 pipenv lock --requirements > requirements.txt
@@ -347,15 +433,54 @@ pipsi freeze
 pipsi install <package>
 pipsi list
 pipsi uninstall <package>
+poetry add
+poetry add "pendulum>=2.0.5"
+poetry add --dev
+poetry add ../my-package/dist/my-package-0.1.0.tar.gz
+poetry add ../my-package/dist/my_package-0.1.0.whl
+poetry add ./my-package/
+poetry add git+https://github.com/sdispater/pendulum.git
+poetry add pendulum@latest
+poetry build
+poetry check
+poetry config --list
+poetry config virtualenvs.create false
+poetry env
+poetry env info
+poetry env info --path
+poetry env remove $(basename poetry env info --path)
+poetry env remove /full/path/to/python
+poetry env remove 3.7
+poetry env remove python3.7
+poetry env remove test-O3eWbxRl-py3.7
+poetry env use /full/path/to/python
+poetry env use python3.7
+poetry init
+poetry install
+poetry install --no-dev
+poetry install -E mysql -E pgsql
+poetry new --name
+poetry publish
+poetry remove
+poetry run python -V
+poetry run which python
+poetry shell
+poetry show
+poetry update
 pre-commit
 pre-commit install
+prettier --check
+prettier --check "**/*.{js,jsx,ts,tsx,json,css,scss,md}"
+prettier --write
 printenv
+printenv | grep <term>
 printenv | grep PATTERN_ | lc
 ps aux | grep "celery" | grep -v grep | awk "{ print \$2 }" | xargs kill -9
 ps aux | grep "python" | grep -v grep | awk "{ print \$2 }" | xargs kill -9
 ps aux | grep "rabbitmq-server" | grep -v grep | awk "{ print \$2 }" | xargs kill -9
 ps aux | grep <program/process>
 ps aux | grep <program/process> | grep -v grep
+psql --host=mypostgresql.example.us-west-2.rds.amazonaws.com --port=5432 --username=awsuser --password --dbname=mypgdb
 py.test
 py.test --collect-only
 py.test --fixtures
@@ -381,34 +506,54 @@ python manage.py loaddata path/to/fixtures.json
 python manage.py makemigrations --settings settings.production
 python manage.py migrate --settings settings.production
 python manage.py runserver --settings settings.production
-PYTHONPATH='.' luigi --module top_10_artists Top10Artists --date-interval 2012-06
-PYTHONPATH='.' luigi --module top_10_artists Top10Artists --local-scheduler --date-interval 2012-06
 rm -rf $(brew --cache)
 rm -rf <folder>
 rm <filename.ext>
+rsync -vazh --dry-run --partial root@<host>:<path/to/app> <local/path>
 scp -i ~/.ssh/key.pem -r <user>@<host>:/path/remote/images /path/local/images
 scp <user>@<host>:/path/remote/file.backup .
 scrapy crawl <spider> -a <argument>=<value>
 scrapy list
+screen
+screen -S <session_name>
+screen -list
+screen -ls
+screen -r <session_name>
+screen -x <session_name>
+sed -i '' 's/<string-pattern>/<string-substitute>/g' *
+sh install.sh
+sh pre-commit-install.sh
+sort result.md5 | uniq -D -w 32
+sort result.md5 | uniq -cd -w 32 | sort -nr
 spark-shell
 spark-shell --version
-ssh -i <path/to/key.pem> <user>@<host>
-ssh -i <path/to/key.pem> ec2-user@<aws.host.compute-1.amazonaws.com>
+split -l <number-of-lines> <file-example.csv>
 ssh -T -p 443 git@ssh.github.com
 ssh -T git@github.com
+ssh -i <path/to/key.pem> <user>@<host>
+ssh -i <path/to/key.pem> ec2-user@<aws.host.compute-1.amazonaws.com>
 ssh agent
+ssh pi@<retropie-address>
 ssh-add -K <path/to/key.pem>
+ssh-add -K ~/.ssh/id_rsa
 ssh-add <path/to/key.pem>
-ssh-keygen -t rsa -b 4096 -C "afmalvim@gmail.com"
-ssh-keygen -t rsa -b 4096 -C "arthur@intelivix.com"
-SSH_PASSWORD=retropie ssh pi@retropie.local
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+start-storybook -p 7654
 subl .
 sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/PENDRIVEMACOS --applicationpath /Applications/Install\ macOS\ High\ Sierra.app --nointeraction
+sudo LS_JAVA_OPTS="-Xmx30g -Xms25g" /usr/share/logstash/bin/logstash -f logstash-pg-cnseg-production.conf
+sudo dmesg -wH
+sudo killall AppleCameraAssistant
+sudo killall PTPCamera
 sudo mount -t ntfs -o rw,auto,nobrowse /dev/disk2s1 /Volumes/WesternDigital
 sudo umount /Volumes/WesternDigital
 sudo xattr -d -r -s com.apple.quarantine '/path/to/some/file.txt'
 sysctl -n hw.ncpu
-TEST_PATH=/path/to/tests/specific-test.py make test
+system_profiler SPUSBDataType
+telnet <endpoint> port
+ttygif bacon
+ttyrec bacon
+watch 'sudo dmesg | tail -50'
 webpack
 wget http://www.somedomain.com/templates// -P ./to/path/output
 which -a <binary>
@@ -419,8 +564,12 @@ xcodebuild -license
 yarn --version
 yarn add <package>
 yarn add <package> --dev
+yarn generate-types
 yarn init
+yarn list --depth=0
+yarn version check --interactive
 youtube-dl https://www.youtube.com/watch\?v\=00000000000
+yt-dlp <url>
 zeppelin-daemon.sh start
 zeppelin-daemon.sh status
 zeppelin-daemon.sh stop
