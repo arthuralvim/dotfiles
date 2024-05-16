@@ -17,12 +17,12 @@ zmodload zsh/zprof
 #  \ \_____\   /\_\/\_\  \ \_\    \ \_____\  \ \_\ \_\    \ \_\  \/\_____\
 #   \/_____/   \/_/\/_/   \/_/     \/_____/   \/_/ /_/     \/_/   \/_____/
 
-export HOMESHICK_DIR=/usr/local/opt/homeshick
-source "/usr/local/opt/homeshick/homeshick.sh"
-
 # general
 export DOTFILES_DIR="$HOME/.homesick/repos/dotfiles"
-export HOMEBREW_PREFIX=$(brew --prefix)/opt
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export HOMESHICK_DIR=/opt/homebrew/opt/homeshick
+source "/opt/homebrew/opt/homeshick/homeshick.sh"
 
 [ -d $HOME/Work ] || mkdir -p $HOME/Work
 export PROJECT_HOME=$HOME/Work
@@ -30,25 +30,20 @@ export PROJECT_HOME=$HOME/Work
 # gpg
 export GPG_TTY=$(tty)
 
-# android
-export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
-export ANDROID_HOME=/opt/homebrew-cask/Caskroom/android-sdk/3859397,26.0.2
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-
-# brew
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+# java
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # node / nvm
-export NODE_PATH="/usr/local/lib/node_modules"
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # python / pyenv
 [ -d $HOME/.virtualenvs ] || mkdir -p $HOME/.virtualenvs
 export WORKON_HOME=$HOME/.virtualenvs
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+
 export PYENV_ROOT="$HOME/.pyenv"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
@@ -63,11 +58,6 @@ export PYENV_DOWNLOAD_CACHE=$HOME/.pip/pyenv/cache
 export PIPENV_CACHE_DIR=$HOME/.pipenv/cache
 export PIP_DISABLE_CACHE=true
 
-# export PYSPARK_DRIVER_PYTHON=jupyter
-# export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
-# export PYSPARK_SUBMIT_ARGS="--master local[2] pyspark-shell"
-# export PYSPARK_PYTHON=/Users/arthuralvim/....
-
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -76,8 +66,7 @@ export AWS_SHARED_CREDENTIALS_FILE=/Users/arthuralvim/.aws/credentials
 
 # fuzzyfinder
 if which fzf &> /dev/null; then
-    [[ $- == *i* ]] && source "$HOMEBREW_PREFIX/fzf/shell/completion.zsh" 2> /dev/null
-    source "$HOMEBREW_PREFIX/fzf/shell/key-bindings.zsh"
+    eval "$(fzf --zsh)"
 fi
 
 #  ______   ______     ______   __  __     ______
@@ -105,13 +94,11 @@ dirs_to_append=(
     "/opt/X11/bin"
     "$HOME/bin"
     "$HOME/.rvm/bin"
+    "$HOME/.jenv/bin"
     "$HOMEBREW_PREFIX/node/bin"
     "$HOMEBREW_PREFIX/fzf/bin"
     "$HOMEBREW_PREFIX/go/bin"
-    "/Applications/Postgres.app/Contents/Versions/latest/bin"
-    "/Applications/MongoDB.app/Contents/Resources/Vendor/mongodb/bin"
-    "/Applications/RabbitMQ.app/Contents/Resources/Vendor/rabbitmq/sbin"
-    "/Applications/Redis.app/Contents/Resources/Vendor/redis/bin"
+    "$HOMEBREW_PREFIX/llvm@9/bin"
     "/Applications/Docker.app/Contents/Resources/bin"
 )
 
@@ -148,7 +135,7 @@ export PATH
 # folders
 alias home="cd $HOME"
 alias pro="cd $PROJECT_HOME"
-alias work="cd $PROJECT_HOME/pluralsight"
+alias work="cd $PROJECT_HOME"
 alias dotfiles="hm cd dotfiles"
 alias hm="homeshick"
 alias please='sudo'
@@ -167,17 +154,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-# python
-alias asjson='python -m json.tool'
-alias py2server='python -m SimpleHTTPServer'
-alias py3server='python -m http.server'
-alias pyserver='python -m http.server'
-
-# pyenv
-alias py_versions_available="pyenv install -l"
-alias py_versions_installed="pyenv versions"
-alias py_virtualenvs="pyenv virtualenvs"
-
 # httpie
 alias 'GET=http -v GET'
 alias 'POST=http -v POST'
@@ -186,28 +162,9 @@ alias 'PATCH=http -v PATCH'
 alias 'DELETE=http -v DELETE'
 alias 'OPTION=http -v OPTION'
 
-# ruby
-alias sgi='sudo gem install --no-ri --no-rdoc'
-
-# git
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gcv='git commit --no-verify'
-
 # ohmyzsh
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias zshcfg="$EDITOR ~/.zshrc"
-
-# networking
-alias local-ip-all="ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'"
-alias local-ip="ipconfig getifaddr en0"
-alias ipext='dig +short myip.opendns.com @resolver1.opendns.com'
-alias mac-adresses='networksetup -listallhardwareports'
-
-alias ssh-pub-key='cat $HOME/.ssh/id_rsa.pub'
-
-# env
-alias show-vars='printenv'
 
 # utils
 alias o="open"
@@ -216,7 +173,6 @@ alias clipboard='pbcopy'
 alias top='htop'
 alias youtube='youtube-dl -t'
 alias psg='ps aux | grep -i'
-alias ports='sudo lsof -i -P | grep -i "listen"'
 
 # disk
 alias disk_usage='df -h'
@@ -231,10 +187,9 @@ alias pp7='kill -9'
 alias gun='kill -9'
 alias machine-gun='killall -9'
 
-# dns
-alias clear-dns-cache="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
-
 # zsh
 alias ztheme='(){ export ZSH_THEME="$@" && source $ZSH/oh-my-zsh.sh }'
 
 tutu
+
+[[ -s "$HOME/.work" ]] && source "$HOME/.work"

@@ -1,12 +1,17 @@
+# brew install pyenv pyenv-virtualenv openssl readline sqlite3 xz zlib
+# pyenv install 3.11.9
+# pyenv install 3.12.3
+# pyenv global 3.12.3
+# gpip install pipx
+# pipx install awscli black httpie ipython mypy poetry pre-commit yt-dlp pycodestyle flake8
 
-CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite3)/include" pyenv install miniconda-3.18.3
-CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite3)/include" pyenv install 2.7.15
-CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite3)/include" pyenv install 3.6.0
-CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite3)/include" pyenv install 3.6.8
-
-pyenv global 3.6.0
-
-pip install pipx
+function file_to_array() {
+    array=()
+    while IFS= read -r line
+    do
+        array+=("$line")
+    done < "$1"
+}
 
 file_to_array "PipXPackages"
 
