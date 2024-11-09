@@ -19,7 +19,6 @@ zmodload zsh/zprof
 
 # general
 export DOTFILES_DIR="$HOME/.homesick/repos/dotfiles"
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export HOMESHICK_DIR=/opt/homebrew/opt/homeshick
 source "/opt/homebrew/opt/homeshick/homeshick.sh"
@@ -30,7 +29,19 @@ export PROJECT_HOME=$HOME/Work
 # gpg
 export GPG_TTY=$(tty)
 
+# SSL
+# CERT_PATH=/etc/ssl/certs/
+# CERT_PATH=/opt/homebrew/etc/openssl@3/certs
+# # CERT_PATH=$(python -m certifi)
+# export SSL_CERT_FILE=${CERT_PATH}
+# export REQUESTS_CA_BUNDLE=${CERT_PATH}
+# export CURL_CA_BUNDLE=${CERT_PATH}
+
+# docker
+export DOCKER_DEFAULT_PLATFORM=linux/arm64
+
 # java
+export JENV_ROOT="$HOME/.jenv/"
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # node / nvm
@@ -75,10 +86,10 @@ fi
 #  \ \_\    \ \_\ \_\    \ \_\  \ \_\ \_\  \/\_____\
 #   \/_/     \/_/\/_/     \/_/   \/_/\/_/   \/_____/
 
-
 # directories to be prepended to PATH
 dirs_to_prepend=(
     "$HOME/.local/bin"
+    "$HOME/.jenv/bin:$PATH"
     "$PYENV_ROOT/shims"
 )
 
@@ -94,7 +105,6 @@ dirs_to_append=(
     "/opt/X11/bin"
     "$HOME/bin"
     "$HOME/.rvm/bin"
-    "$HOME/.jenv/bin"
     "$HOMEBREW_PREFIX/node/bin"
     "$HOMEBREW_PREFIX/fzf/bin"
     "$HOMEBREW_PREFIX/go/bin"
@@ -141,6 +151,9 @@ alias hm="homeshick"
 alias please='sudo'
 alias porfavor='sudo'
 alias xx='exit'
+
+# poetry
+alias 'p=poetry run'
 
 # list
 alias ls="ls -Glha"
